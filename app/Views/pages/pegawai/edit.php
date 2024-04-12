@@ -21,33 +21,46 @@
                     </div>
                 </div>
                 <div class="row">
-    <div class="container">
-        <form action="<?= site_url('pegawai/update/' . $pegawai['id']); ?>" method="post">
-            <div class="form-group">
-                <label for="nama">Nama</label>
-                <input type="text" class="form-control" id="nama" name="nama" value="<?= $pegawai['nama'] ?? '' ?>">
-            </div>
-            <div class="form-group">
-                <label for="nip">NIP</label>
-                <input type="text" class="form-control" id="nip" name="nip" value="<?= $pegawai['nip'] ?? '' ?>">
-            </div>
-            <div class="form-group">
-                <label for="jabatan">Jabatan</label>
-                <select class="form-control" id="jabatan" name="jabatan">
-                    <option value="Kepala Kelurahan" <?= $pegawai['jabatan'] == 'Kepala Kelurahan' ? 'selected' : null ?>>Kepala Kelurahan</option>
-                    <option value="Sekretaris Kelurahan" <?= $pegawai['jabatan'] == 'Sekretaris Kelurahan' ? 'selected' : null ?>>Sekretaris Kelurahan</option>
-                    <option value="Kepala Bagian Pemerintahan" <?= $pegawai['jabatan'] == 'Kepala Bagian Pemerintahan' ? 'selected' : null ?>>Kepala Bagian Pemerintahan</option>
-                    <option value="Staf Administrasi Kelurahan" <?= $pegawai['jabatan'] == 'Staf Administrasi Kelurahan' ? 'selected' : null ?>>Staf Administrasi Kelurahan</option>
-                </select>
-            </div>
+                    <div class="container">
+                        <form action="<?= site_url('pegawai/update/' . $pegawai['id']); ?>" method="post">
+                        <?php echo form_hidden('id', $pegawai['id']); ?>
+                        <div class="form-group">
+                                <?php echo form_label('Nama pegawai', 'nama'); ?>
+                                <?php echo form_input(
+                                  'nama',
+                                  $pegawai['nama'],
+                                  ['class' => 'form-control']
+                                ); ?>
+                              </div>
+                              <br>
+                              <div class="form-group">
+                                <?php echo form_label('NIP', 'nip'); ?>
+                                <?php echo form_input(
+                                  'nip',
+                                  $pegawai['nip'],
 
-            <button type="submit" class="btn btn-primary">Simpan</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        </form>
-    </div>
-</div>
+                                  ['class' => 'form-control']
+                                );
 
-<br>
+                                ?>
+                              </div>
+                              <div class="form-group">
+                                <?php echo form_label('Jabatan', 'jabatan'); ?>
+                                <?php
+                                $options = array(
+                                    'Kepala Kelurahan' => 'Kepala Kelurahan',
+                                    'Sekretaris Kelurahan' => 'Sekretaris Kelurahan',
+                                    'Kepala Bagian Pemerintahan' => 'Kepala Bagian Pemerintahan',
+                                    'Staf Administrasi Kelurahan' => 'Staf Administrasi Kelurahan'
+                                );
+                                echo form_dropdown('jabatan', $options, $pegawai['jabatan'], 'class="form-control"');
+                                ?>
+                            </div>
+                            <a href="<?php echo base_url('pegawai'); ?>" class="btn btn-outline-info"> <i class="nav-icon fas fa-backward"></i> Kembali</a>
+                        <button type="submit" class="btn btn-primary"> <i class="nav-icon fas fa-save"></i> Perbarui Data</button>
+                        </form>
+                    </div>
+                </div><br>
             </div>
     </main>
     <?php echo view('pages/layout/footer'); ?>
