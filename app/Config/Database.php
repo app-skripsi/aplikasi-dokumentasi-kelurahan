@@ -31,15 +31,15 @@ class Database extends Config
      * @var array
      */
     public $default = [
-        'DSN'      => '',
-        'hostname' => 'localhost',
-        'username' => '',
-        'password' => '',
-        'database' => '',
+        'DSN'       => '',
+        'hostname'  => 'localhost',
+        'username'  => 'root',
+        'password'  => '',
+        'database'  => 'db_siadi',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
-        'DBDebug'  => (ENVIRONMENT !== 'production'),
+        'DBDebug'  => (ENVIRONMENT !== 'development'),
         'charset'  => 'utf8',
         'DBCollat' => 'utf8_general_ci',
         'swapPre'  => '',
