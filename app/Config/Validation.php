@@ -64,38 +64,34 @@ class Validation
 
 
     public $arsip = [
-		'number'        => 'required',
-		'kode'   		=> 'required',
-		'nama'   		=> 'required',
-		'type'   		=> 'required',
-		'date'   		=> 'required',
-		'record'   		=> 'required',
-		'pic'   	    => 'required',
+		'kode_arsip'        => 'required',
+		'nama_arsip'   		=> 'required',
+		'jenis_arsip'   		=> 'required',
+		'tanggal_pembuatan'   		=> 'required',
+		'lokasi_arsip'   		=> 'required',
+		'pegawai_id'   		=> 'required',
 	];
 
 	public $arsip_errors = [
-		'number'    			=> [
-			'required'			=> 'number perlu di isi'
+		'kode_arsip'    			=> [
+			'required'			=> 'kode_arsip perlu di isi'
 		],
 
-		'kode'   		        => [
-			'required'			=> 'kode perlu di isi'
+		'nama_arsip'   		        => [
+			'required'			=> 'nama_arsip perlu di isi'
         ],
-        'nama'   		        => [
-			'required'			=> 'nama perlu di isi'
+        'jenis_arsip'   		        => [
+			'required'			=> 'jenis_arsip perlu di isi'
 		],
-        'type'   		        => [
-			'required'			=> 'type perlu di isi'
+        'tanggal_pembuatan'   		        => [
+			'required'			=> 'tanggal_pembuatan perlu di isi'
 		],
-        'date'   		        => [
-			'required'			=> 'date perlu di isi'
+        'lokasi_arsip'   		        => [
+			'required'			=> 'lokasi_arsip perlu di isi'
 		],
-        'record'   		        => [
-			'required'			=> 'record perlu di isi'
-		],
-        'pic'   		        => [
-			'required'			=> 'pic perlu di isi'
-		],
+        'pegawai_id'   		        => [
+			'required'			=> 'pegawai_id perlu di isi'
+		]
 	];
 
 

@@ -24,37 +24,46 @@
                     <div class="container">
                         <form action="<?= site_url('arsip/store') ?>" method="post">
                             <div class="form-group">
-                                <label for="number" >Number</label>
-                                <input type="text" class="form-control" id="number" name="number" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="kode">Kode</label>
+                                <label for="kode">Kode Arsip</label>
                                 <input type="text" class="form-control" id="kode" name="kode" required>
                             </div>
                             <div class="form-group">
-                                <label for="nama">HP</label>
+                                <label for="nama">Nama Arsip</label>
                                 <input type="text" class="form-control" id="nama" name="nama" required>
                             </div>
                             <div class="form-group">
-                                <label for="type">Type</label>
-                                <input type="text" class="form-control" id="type" name="type" required>
+                                <label for="jenis">Jenis Arsip</label>
+                                <select class="form-control" id="jenis" name="jenis" required>
+                                    <option value="Surat">Surat</option>
+                                    <option value="Kontrak">Kontrak</option>
+                                    <option value="Laporan">Laporan</option>
+                                    <option value="Dokumen Pribadi">Dokumen Pribadi</option>
+                                    <option value="Dokumen Kepegawaian">Dokumen Kepegawaian</option>
+                                    <option value="Dokumen Perizinan">Dokumen Perizinan</option>
+                                    <option value="Arsip Historis">Arsip Historis</option>
+                                    <option value="Dokumen Legal">Dokumen Legal</option>
+                                    <option value="Dokumen Proyek">Dokumen Proyek</option>
+                                    <option value="Dokumen Pendukung Administrasi">Dokumen Pendukung Administrasi</option>
+                                    <option value="Dokumen Pendidikan">Dokumen Pendidikan</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label for="date">date</label>
-                                <input type="date" class="form-control" id="date" name="date" required>
+                                <label for="tanggal">Tanggal Pembuatan</label>
+                                <input type="date" class="form-control" id="tanggal" name="tanggal" required>
                             </div>
                             <div class="form-group">
-                                <label for="record">record</label>
-                                <input type="date" class="form-control" id="record" name="record" required>
+                                <label for="lokasi">Lokasi Arsip</label>
+                                <input type="text" class="form-control" id="lokasi" name="lokasi" required>
                             </div>
                             <div class="form-group">
-                                <label for="pic">pic</label>
-                                <input type="text" class="form-control" id="pic" name="pic" required>
-                            </div>
-                            <!-- <div class="form-group">
-                            <label for="image">Upload Pdf / Gambar Dokumen</label>
-                                <input type="file"class="form-control" id="doc" name="doc" accept="image/*, .pdf" required>
-                            </div> -->
+    <label for="pegawai_id">Pegawai</label>
+    <select class="form-control" id="pegawai_id" name="pegawai_id" required>
+        <?php foreach ($pegawai_list as $pegawai) : ?>
+            <option value="<?= $pegawai['id'] ?>"><?= $pegawai['nama'] ?></option>
+        <?php endforeach; ?>
+    </select>
+</div>
+
                             <button type="submit" class="btn btn-primary">Simpan</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                         </form>

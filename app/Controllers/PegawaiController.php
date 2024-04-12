@@ -63,31 +63,17 @@ class PegawaiController extends BaseController
     }
     return view('pages/pegawai/edit', $data);
 	}
+
     public function update()
     {
         $id = $this->request->getPost('id');
-    
-        $validation =  \Config\Services::validation();
-    
         $data = [
             'nama'      => $this->request->getPost('nama'),
             'nip'       => $this->request->getPost('nip'),
             'jabatan'   => $this->request->getPost('jabatan'),
         ];
-    
-        // Jalankan validasi data
-        if (!$validation->run($data, 'pegawai')) {
-            $errors = $validation->errors(); // Ambil pesan kesalahan validasi
-            // Tampilkan pesan kesalahan
-            foreach ($errors as $error) {
-                echo $error . '<br>';
-            }
-            return;
-        }
-    
         // Panggil metode updateData dari model untuk melakukan pembaruan data
         $ubah = $this->pegawai->updateData($id, $data);
-    
         if ($ubah) {
             session()->setFlashdata('info', 'Update Data Berhasil');
             return redirect()->to(base_url('pegawai'));
@@ -97,7 +83,6 @@ class PegawaiController extends BaseController
             return redirect()->to(base_url('pegawai/edit/' . $id));
         }
     }
-    
 	public function delete($id)
 	{
 		// proteksi halaman

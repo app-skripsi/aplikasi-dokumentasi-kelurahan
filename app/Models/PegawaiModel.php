@@ -31,14 +31,14 @@ class PegawaiModel extends Model
 	{
 		$query = $this->db->table($this->table)
 						->where('id', $id)
-						->update($data); // Menggunakan $data langsung sebagai parameter update
-		var_dump($query); // Cetak query untuk dianalisis
-	
+						->update($data);
+		var_dump($query);
+
 		return $this->db->table($this->table)
 						->where('id', $id)
-						->update($data); // Menggunakan $data la
+						->update($data);
 	}
-	
+
 
 	public function deleteData($id)
 	{

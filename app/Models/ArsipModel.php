@@ -35,4 +35,8 @@ class ArsipModel extends Model
 	{
 		return $this->db->table($this->table)->delete(['id' => $id]);
 	}
+	public function pegawai()
+    {
+        return $this->belongsTo(PegawaiModel::class);
+    }
 }

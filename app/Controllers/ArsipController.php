@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ArsipModel;
+use App\Models\PegawaiModel;
 
 class ArsipController extends BaseController
 {
@@ -28,7 +29,9 @@ class ArsipController extends BaseController
 		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
 		// 	return redirect()->to(base_url('login'));
 		// }
-		return view('pages/arsip/create');
+        $pegawaiModel = new PegawaiModel();
+        $data['pegawai_list'] = $pegawaiModel->findAll();
+		return view('pages/arsip/create', $data);
 	}
 
 	public function store()

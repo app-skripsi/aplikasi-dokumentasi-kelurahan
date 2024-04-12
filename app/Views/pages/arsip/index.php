@@ -42,13 +42,12 @@
                 <thead>
                   <tr>
                     <th style="text-align: center">No</th>
-                    <th style="text-align: center">Number</th>
-                    <th style="text-align: center">Kode</th>
-                    <th style="text-align: center">Nama</th>
-                    <th style="text-align: center">Type</th>
-                    <th style="text-align: center">Date</th>
-                    <th style="text-align: center">Record</th>
-                    <th style="text-align: center">Pic</th>
+                    <th style="text-align: center">Kode Arsip</th>
+                    <th style="text-align: center">Nama Arsip</th>
+                    <th style="text-align: center">Jenis Arsip</th>
+                    <th style="text-align: center">Tanggal Pembuatan</th>
+                    <th style="text-align: center">Lokasi Arsip</th>
+                    <th style="text-align: center">Pegawai ID</th>
                     <th style="text-align: center">Action</th>
                   </tr>
                 </thead>
@@ -59,25 +58,22 @@
                         <?php echo $key + 1; ?>
                       </td>
                       <td style="text-align: center">
-                        <?php echo $row['number']; ?>
+                        <?php echo $row['kode_arsip']; ?>
                       </td>
                       <td style="text-align: center">
-                        <?php echo $row['kode']; ?>
+                        <?php echo $row['nama_arsip']; ?>
                       </td>
                       <td style="text-align: center">
-                        <?php echo $row['nama']; ?>
+                        <?php echo $row['jenis_arsip']; ?>
                       </td>
                       <td style="text-align: center">
-                        <?php echo $row['type']; ?>
+                        <?php echo $row['tanggal_pembuatan']; ?>
                       </td>
                       <td style="text-align: center">
-                        <?php echo $row['date']; ?>
+                        <?php echo $row['lokasi_arsip']; ?>
                       </td>
                       <td style="text-align: center">
-                        <?php echo $row['record']; ?>
-                      </td>
-                      <td style="text-align: center">
-                        <?php echo $row['pic']; ?>
+                        <?php echo $row['pegawai_id']; ?>
                       </td>
                       <td style="text-align: center">
                         <div class="btn-group">
