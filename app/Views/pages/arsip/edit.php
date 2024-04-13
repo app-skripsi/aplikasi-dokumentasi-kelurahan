@@ -23,44 +23,67 @@
                 <div class="row">
                     <div class="container">
                         <form action="<?= site_url('arsip/update/' . $arsip['id']); ?>" method="post">
+                            <?php echo form_hidden('id', $arsip['id']); ?>
                             <div class="form-group">
-                                <label for="number">Number</label>
-                                <input type="text" class="form-control" id="number" name="number"
-                                    value="<?php echo isset($arsip['number']) ? $arsip['number'] : ''; ?>">
+                                <?php echo form_label('Nama arsip', 'nama_arsip'); ?>
+                                <?php echo form_input(
+                                    'nama_arsip',
+                                    $arsip['nama_arsip'],
+                                    ['class' => 'form-control']
+                                ); ?>
                             </div>
+                            <br>
                             <div class="form-group">
-                                <label for="kode">Kode</label>
-                                <input type="text" class="form-control" id="kode" name="kode"
-                                    value="<?php echo isset($arsip['kode']) ? $arsip['kode'] : ''; ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="nama">HP</label>
-                                <input type="text" class="form-control" id="nama" name="nama"
-                                    value="<?php echo isset($arsip['nama']) ? $arsip['nama'] : ''; ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="type">Type</label>
-                                <input type="text" class="form-control" id="type" name="type"
-                                    value="<?php echo isset($arsip['type']) ? $arsip['type'] : ''; ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="date">date</label>
-                                <input type="date" class="form-control" id="date" name="date"
-                                    value="<?php echo isset($arsip['date']) ? $arsip['date'] : ''; ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="record">record</label>
-                                <input type="date" class="form-control" id="record" name="record"
-                                    value="<?php echo isset($arsip['record']) ? $arsip['record'] : ''; ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="pic">pic</label>
-                                <input type="text" class="form-control" id="pic" name="pic"
-                                    value="<?php echo isset($arsip['pic']) ? $arsip['pic'] : ''; ?>">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                <?php echo form_label('Kode Arsip', 'kode_arsip'); ?>
+                                <?php echo form_input(
+                                    'kode_arsip',
+                                    $arsip['kode_arsip'],
+                                    ['class' => 'form-control']
+                                );
 
+                                ?>
+                            </div>
+                            <div class="form-group">
+                                <?php echo form_label('Tanggal Pembuatan', 'tanggal_pembuatan'); ?>
+                                <?php echo form_input(
+                                    'tanggal_pembuatan',
+                                    $arsip['tanggal_pembuatan'],
+                                    ['class' => 'form-control', 'type' => 'date']
+                                );
+
+                                ?>
+                            </div>
+                            <div class="form-group">
+                                <?php echo form_label('Lokasi Arsip', 'lokasi_arsip'); ?>
+                                <?php echo form_input(
+                                    'lokasi_arsip',
+                                    $arsip['lokasi_arsip'],
+                                    ['class' => 'form-control']
+                                );
+
+                                ?>
+                            </div>
+                            <div class="form-group">
+                                <?php echo form_label('Jenis Arsip', 'jenis_arsip'); ?>
+                                <?php
+                                $options = array(
+                                    'Surat' => 'Surat',
+                                    'Kontrak' => 'Kontrak',
+                                    'Laporan' => 'Laporan',
+                                    'Dokumen Pribadi' => 'Dokumen Pribadi',
+                                    'Dokumen Kepegawaian' => 'Dokumen Kepegawaian',
+                                    'Dokumen Perizinan' => 'Dokumen Perizinan',
+                                    'Arsip Historis' => 'Arsip Historis',
+                                    'Dokumen Legal' => 'Dokumen Legal',
+                                    'Dokumen Proyek' => 'Dokumen Proyek',
+                                    'Dokumen Pendukung Administrasi' => 'Dokumen Pendukung Administrasi',
+                                    'Dokumen Pendidikan' => 'Dokumen Pendidikan'
+                                );
+                                echo form_dropdown('jenis_arsip', $options, $arsip['jenis_arsip'], 'class="form-control"');
+                                ?>
+                            </div>
+                            <a href="<?php echo base_url('arsip'); ?>" class="btn btn-outline-info"> <i class="nav-icon fas fa-backward"></i> Kembali</a>
+                            <button type="submit" class="btn btn-primary"> <i class="nav-icon fas fa-save"></i> Perbarui Data</button>
                         </form>
                     </div>
                 </div><br>

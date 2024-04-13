@@ -47,7 +47,6 @@
                     <th style="text-align: center">Jenis Arsip</th>
                     <th style="text-align: center">Tanggal Pembuatan</th>
                     <th style="text-align: center">Lokasi Arsip</th>
-                    <th style="text-align: center">Pegawai ID</th>
                     <th style="text-align: center">Action</th>
                   </tr>
                 </thead>
@@ -71,9 +70,6 @@
                       </td>
                       <td style="text-align: center">
                         <?php echo $row['lokasi_arsip']; ?>
-                      </td>
-                      <td style="text-align: center">
-                        <?php echo $row['pegawai_id']; ?>
                       </td>
                       <td style="text-align: center">
                         <div class="btn-group">

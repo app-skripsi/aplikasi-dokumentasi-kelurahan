@@ -24,29 +24,27 @@ class DokumenController extends BaseController
 	public function create()
 	{
 		// proteksi halaman
-		if (session()->get('username') == '') {
-			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-			return redirect()->to(base_url('login'));
-		}
+		// if (session()->get('username') == '') {
+		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
+		// 	return redirect()->to(base_url('login'));
+		// }
 		return view('pages/dokumen/create');
 	}
 
 	public function store()
 	{
 		// proteksi halaman
-		if (session()->get('username') == '') {
-			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-			return redirect()->to(base_url('login'));
-		}
+		// if (session()->get('username') == '') {
+		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
+		// 	return redirect()->to(base_url('login'));
+		// }
 		$validation =  \Config\Services::validation();
 		$data = array(
-			'number'        	=> $this->request->getPost('number'),
-			'kode'         		=> $this->request->getPost('kode'),
-			'nama'         		=> $this->request->getPost('nama'),
-			'type'         		=> $this->request->getPost('type'),
-			'date'         		=> $this->request->getPost('date'),
-			'record'         	=> $this->request->getPost('record'),
-			'pic'         		=> $this->request->getPost('pic'),
+			'nama_dokumen'        	=> $this->request->getPost('nama_dokumen'),
+			'tipe_dokumen'         		=> $this->request->getPost('tipe_dokumen'),
+			'jenis_dokumen'         		=> $this->request->getPost('jenis_dokumen'),
+			'lokasi_dokumen'         		=> $this->request->getPost('lokasi_dokumen'),
+			'tanggal_upload'         		=> $this->request->getPost('tanggal_upload'),
 		);
 
 		if ($validation->run($data, 'pages/dokumen') == FALSE) {
@@ -67,10 +65,10 @@ class DokumenController extends BaseController
 	public function edit($id)
 	{
 		// proteksi halaman
-		if (session()->get('username') == '') {
-			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-			return redirect()->to(base_url('login'));
-		}
+		// if (session()->get('username') == '') {
+		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
+		// 	return redirect()->to(base_url('login'));
+		// }
 		$data['pages/dokumen'] = $this->dokumen->getData($id);
 		echo view('pages/dokumen/edit', $data);
 	}
@@ -78,22 +76,20 @@ class DokumenController extends BaseController
 	public function update()
 	{
 		// proteksi halaman
-		if (session()->get('username') == '') {
-			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-			return redirect()->to(base_url('login'));
-		}
+		// if (session()->get('username') == '') {
+		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
+		// 	return redirect()->to(base_url('login'));
+		// }
 		$id = $this->request->getPost('id');
 
 		$validation =  \Config\Services::validation();
 
 		$data = array(
-			'number'        	=> $this->request->getPost('number'),
-			'kode'         		=> $this->request->getPost('kode'),
-			'nama'         		=> $this->request->getPost('nama'),
-			'type'         		=> $this->request->getPost('type'),
-			'date'         		=> $this->request->getPost('date'),
-			'record'         	=> $this->request->getPost('record'),
-			'pic'         		=> $this->request->getPost('pic'),
+			'nama_dokumen'        	=> $this->request->getPost('nama_dokumen'),
+			'tipe_dokumen'         		=> $this->request->getPost('tipe_dokumen'),
+			'jenis_dokumen'         		=> $this->request->getPost('jenis_dokumen'),
+			'lokasi_dokumen'         		=> $this->request->getPost('lokasi_dokumen'),
+			'tanggal_upload'         		=> $this->request->getPost('tanggal_upload'),
 
 		);
 		if ($validation->run($data, 'pages/dokumen') == FALSE) {

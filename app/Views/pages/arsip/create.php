@@ -24,16 +24,16 @@
                     <div class="container">
                         <form action="<?= site_url('arsip/store') ?>" method="post">
                             <div class="form-group">
-                                <label for="kode">Kode Arsip</label>
-                                <input type="text" class="form-control" id="kode" name="kode" required>
+                                <label for="kode_arsip">Kode Arsip</label>
+                                <input type="text" class="form-control" id="kode_arsip" name="kode_arsip" required>
                             </div>
                             <div class="form-group">
                                 <label for="nama">Nama Arsip</label>
-                                <input type="text" class="form-control" id="nama" name="nama" required>
+                                <input type="text" class="form-control" id="nama_arsip" name="nama_arsip" required>
                             </div>
                             <div class="form-group">
-                                <label for="jenis">Jenis Arsip</label>
-                                <select class="form-control" id="jenis" name="jenis" required>
+                                <label for="jenis_arsip">Jenis Arsip</label>
+                                <select class="form-control" id="jenis_arsip" name="jenis_arsip" required>
                                     <option value="Surat">Surat</option>
                                     <option value="Kontrak">Kontrak</option>
                                     <option value="Laporan">Laporan</option>
@@ -48,22 +48,13 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="tanggal">Tanggal Pembuatan</label>
-                                <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+                                <label for="tanggal_pembuatan">Tanggal Pembuatan</label>
+                                <input type="date" class="form-control" id="tanggal_pembuatan" name="tanggal_pembuatan" required>
                             </div>
                             <div class="form-group">
-                                <label for="lokasi">Lokasi Arsip</label>
-                                <input type="text" class="form-control" id="lokasi" name="lokasi" required>
+                                <label for="lokasi_arsip">Lokasi Arsip</label>
+                                <input type="text" class="form-control" id="lokasi_arsip" name="lokasi_arsip" required>
                             </div>
-                            <div class="form-group">
-    <label for="pegawai_id">Pegawai</label>
-    <select class="form-control" id="pegawai_id" name="pegawai_id" required>
-        <?php foreach ($pegawai_list as $pegawai) : ?>
-            <option value="<?= $pegawai['id'] ?>"><?= $pegawai['nama'] ?></option>
-        <?php endforeach; ?>
-    </select>
-</div>
-
                             <button type="submit" class="btn btn-primary">Simpan</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                         </form>

@@ -35,15 +35,9 @@ class DokumenMigration extends Migration
             ],
             'tanggal_upload' => [
                 'type' => 'DATE',
-            ],
-            'pegawai_id' => [
-                'type' => 'INT',
-                'constraint' => 11,
-                'unsigned' => true,
-            ],
+            ]
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('pegawai_id', 'pegawai', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('dokumen');
     }
 

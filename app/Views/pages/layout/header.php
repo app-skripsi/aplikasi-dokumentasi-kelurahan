@@ -27,9 +27,9 @@
                     <li class="col-md-3 col-lg-auto mb-2 mb-lg-0">
                         <a href="<?php echo base_url('/'); ?>" class="btn btn-primary animate-up-2 w-100">Home</a>
                     </li>
-                    <li class="col-md-3 col-lg-auto mb-2 mb-lg-0">
+                    <!-- <li class="col-md-3 col-lg-auto mb-2 mb-lg-0">
                             <a href="<?php echo base_url('/pegawai'); ?>" class="btn btn-primary animate-up-2 w-100">Data Pegawai</a>
-                        </li>
+                        </li> -->
                     <li class="col-md-3 col-lg-auto mb-2 mb-lg-0">
                         <a href="<?php echo base_url('/arsip'); ?>" class="btn btn-primary animate-up-2 w-100">Data
                             Arsip</a>
@@ -38,9 +38,9 @@
                         <a href="<?php echo base_url('/dokumen'); ?>" class="btn btn-primary animate-up-2 w-100">Data
                             Dokumen</a>
                     </li>
-                    <li class="col-md-3 col-lg-auto mb-2 mb-lg-0">
+                    <!-- <li class="col-md-3 col-lg-auto mb-2 mb-lg-0">
                             <a href="<?php echo base_url('/users'); ?>" class="btn btn-primary animate-up-2 w-100">Data Users</a>
-                        </li>
+                        </li> -->
                 </ul>
             </div>
             <div class="d-flex align-items-center">

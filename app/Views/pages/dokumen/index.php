@@ -22,9 +22,10 @@
                 <div class="row">
                     <div class="container">
                         <div class="form-group">
-                            <a type="button" class="btn btn-primary mt-3 float-right btn-plus"
-                                style="margin-bottom: 10px;"><i class="fas fa-plus"></i></a>
-                            </a>
+                        <a href="<?php echo base_url("dokumen/create") ?>" type="button"
+                class="btn btn-primary mt-3 float-right btn-plus" style="margin-bottom: 10px;"><i
+                  class="fas fa-plus"></i></a>
+              </a>
                             <a type="button" class="btn btn-primary mt-3 float-left"
                                 style="margin-left: 10px;"><em><em></em></em>
                                 <i class="fas fa-file-excel"></i> Export Excel
@@ -42,13 +43,11 @@
                                 <thead>
                                     <tr>
                                         <th style="text-align: center">No</th>
-                                        <th style="text-align: center">Number</th>
-                                        <th style="text-align: center">Kode</th>
-                                        <th style="text-align: center">Nama</th>
-                                        <th style="text-align: center">Type</th>
-                                        <th style="text-align: center">Date</th>
-                                        <th style="text-align: center">Record</th>
-                                        <th style="text-align: center">Pic</th>
+                                        <th style="text-align: center">Nama Dokumen</th>
+                                        <th style="text-align: center">Jenis</th>
+                                        <th style="text-align: center">Tipe</th>
+                                        <th style="text-align: center">Lokasi</th>
+                                        <th style="text-align: center">Tanggal Upload</th>
                                         <th style="text-align: center">Action</th>
                                     </tr>
                                 </thead>
@@ -59,25 +58,19 @@
                                                 <?php echo $key + 1; ?>
                                             </td>
                                             <td style="text-align: center">
-                                                <?php echo $row['number']; ?>
+                                                <?php echo $row['nama_dokumen']; ?>
                                             </td>
                                             <td style="text-align: center">
-                                                <?php echo $row['kode']; ?>
+                                                <?php echo $row['tipe_dokumen']; ?>
                                             </td>
                                             <td style="text-align: center">
-                                                <?php echo $row['nama']; ?>
+                                                <?php echo $row['jenis_dokumen']; ?>
                                             </td>
                                             <td style="text-align: center">
-                                                <?php echo $row['type']; ?>
+                                                <?php echo $row['lokasi_dokumen']; ?>
                                             </td>
                                             <td style="text-align: center">
-                                                <?php echo $row['date']; ?>
-                                            </td>
-                                            <td style="text-align: center">
-                                                <?php echo $row['record']; ?>
-                                            </td>
-                                            <td style="text-align: center">
-                                                <?php echo $row['pic']; ?>
+                                                <?php echo $row['tanggal_upload']; ?>
                                             </td>
                                             <td style="text-align: center">
                                                 <div class="btn-group">
@@ -96,52 +89,6 @@
                                     <?php } ?>
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel">Tambah Data</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="<?= site_url('arsip/create') ?>" method="post">
-                                <div class="form-group">
-                                    <label for="number">Number</label>
-                                    <input type="text" class="form-control" id="number" name="number">
-                                </div>
-                                <div class="form-group">
-                                    <label for="kode">Kode</label>
-                                    <input type="text" class="form-control" id="kode" name="kode">
-                                </div>
-                                <div class="form-group">
-                                    <label for="nama">HP</label>
-                                    <input type="text" class="form-control" id="nama" name="nama">
-                                </div>
-                                <div class="form-group">
-                                    <label for="type">Type</label>
-                                    <input type="text" class="form-control" id="type" name="type">
-                                </div>
-                                <div class="form-group">
-                                    <label for="date">date</label>
-                                    <input type="date" class="form-control" id="date" name="date">
-                                </div>
-                                <div class="form-group">
-                                    <label for="record">record</label>
-                                    <input type="date" class="form-control" id="record" name="record">
-                                </div>
-                                <div class="form-group">
-                                    <label for="pic">pic</label>
-                                    <input type="text" class="form-control" id="pic" name="pic">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            </form>
                         </div>
                     </div>
                 </div>

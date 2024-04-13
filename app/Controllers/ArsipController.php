@@ -9,11 +9,13 @@ use App\Models\PegawaiModel;
 class ArsipController extends BaseController
 {
     protected $arsip;
+	protected $pegawai;
 
     public function __construct()
 	{
 		helper(['form']);
 		$this->arsip = new ArsipModel();
+		$this->pegawai = new PegawaiModel();
 	}
 
 	public function index()
@@ -24,14 +26,7 @@ class ArsipController extends BaseController
 
 	public function create()
 	{
-		// proteksi halaman
-		// if (session()->get('username') == '') {
-		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-		// 	return redirect()->to(base_url('login'));
-		// }
-        $pegawaiModel = new PegawaiModel();
-        $data['pegawai_list'] = $pegawaiModel->findAll();
-		return view('pages/arsip/create', $data);
+		return view('pages/arsip/create', );
 	}
 
 	public function store()
@@ -43,13 +38,11 @@ class ArsipController extends BaseController
 		// }
 		$validation =  \Config\Services::validation();
 		$data = array(
-			'number'        	=> $this->request->getPost('number'),
-			'kode'         		=> $this->request->getPost('kode'),
-			'nama'         		=> $this->request->getPost('nama'),
-			'type'         		=> $this->request->getPost('type'),
-			'date'         		=> $this->request->getPost('date'),
-			'record'         	=> $this->request->getPost('record'),
-			'pic'         		=> $this->request->getPost('pic'),
+			'kode_arsip'        	=> $this->request->getPost('kode_arsip'),
+			'nama_arsip'         		=> $this->request->getPost('nama_arsip'),
+			'jenis_arsip'         		=> $this->request->getPost('jenis_arsip'),
+			'tanggal_pembuatan'         		=> $this->request->getPost('tanggal_pembuatan'),
+			'lokasi_arsip'         		=> $this->request->getPost('lokasi_arsip'),
 		);
 
 		if ($validation->run($data, 'arsip') == FALSE) {
@@ -69,34 +62,32 @@ class ArsipController extends BaseController
 	public function edit($id)
 	{
 		// proteksi halaman
-		if (session()->get('username') == '') {
-			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-			return redirect()->to(base_url('login'));
-		}
-		$data['pages/arsip'] = $this->arsip->getData($id);
-		echo view('pages/arsip/edit', $data);
+		// if (session()->get('username') == '') {
+		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
+		// 	return redirect()->to(base_url('login'));
+		// }
+		
+		$arsip['arsip'] = $this->arsip->getData($id);
+		echo view('pages/arsip/edit', $arsip);
 	}
 
 	public function update()
 	{
 		// proteksi halaman
-		if (session()->get('username') == '') {
-			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-			return redirect()->to(base_url('login'));
-		}
+		// if (session()->get('username') == '') {
+		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
+		// 	return redirect()->to(base_url('login'));
+		// }
 		$id = $this->request->getPost('id');
 
 		$validation =  \Config\Services::validation();
 
 		$data = array(
-			'number'        	=> $this->request->getPost('number'),
-			'kode'         		=> $this->request->getPost('kode'),
-			'nama'         		=> $this->request->getPost('nama'),
-			'type'         		=> $this->request->getPost('type'),
-			'date'         		=> $this->request->getPost('date'),
-			'record'         	=> $this->request->getPost('record'),
-			'pic'         		=> $this->request->getPost('pic'),
-
+			'kode_arsip'        	=> $this->request->getPost('kode_arsip'),
+			'nama_arsip'         		=> $this->request->getPost('nama_arsip'),
+			'jenis_arsip'         		=> $this->request->getPost('jenis_arsip'),
+			'tanggal_pembuatan'         		=> $this->request->getPost('tanggal_pembuatan'),
+			'lokasi_arsip'         		=> $this->request->getPost('lokasi_arsip'),
 		);
 		if ($validation->run($data, 'arsip') == FALSE) {
 			session()->setFlashdata('inputs', $this->request->getPost());
