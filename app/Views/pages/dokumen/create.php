@@ -24,32 +24,36 @@
                     <div class="container">
                         <form action="<?= site_url('dokumen/store') ?>" method="post">
                             <div class="form-group">
-                                <label for="number" >Number</label>
-                                <input type="text" class="form-control" id="number" name="number" required>
+                                <label for="nama_dokumen" >Nama Dokumen</label>
+                                <input type="text" class="form-control" id="nama_dokumen" name="nama_dokumen" required>
                             </div>
                             <div class="form-group">
-                                <label for="kode">Kode</label>
-                                <input type="text" class="form-control" id="kode" name="kode" required>
+                                <label for="tipe_dokumen">Tipe Dokumen</label>
+                                <select class="form-control" id="tipe_dokumen" name="tipe_dokumen" required>
+                                    <option value="Public">Public</option>
+                                    <option value="Private">Private</option>
+                                    <option value="Confidential">Confidential</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label for="nama">HP</label>
-                                <input type="text" class="form-control" id="nama" name="nama" required>
+                                <label for="jenis_dokumen">Jenis Dokumen</label>
+                                <select class="form-control" id="jenis_dokumen" name="jenis_dokumen" required>
+                                    <option value="Dokumen Pribadi">Dokumen Pribadi</option>
+                                    <option value="Dokumen Kepegawaian">Dokumen Kepegawaian</option>
+                                    <option value="Dokumen Perizinan">Dokumen Perizinan</option>
+                                    <option value="Dokumen Legal">Dokumen Legal</option>
+                                    <option value="Dokumen Proyek">Dokumen Proyek</option>
+                                    <option value="Dokumen Pendukung Administrasi">Dokumen Pendukung Administrasi</option>
+                                    <option value="Dokumen Pendidikan">Dokumen Pendidikan</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label for="type">Type</label>
-                                <input type="text" class="form-control" id="type" name="type" required>
+                                <label for="lokasi_dokumen">Lokasi Dokumen</label>
+                                <input type="text" class="form-control" id="lokasi_dokumen" name="lokasi_dokumen" required>
                             </div>
                             <div class="form-group">
-                                <label for="date">date</label>
-                                <input type="date" class="form-control" id="date" name="date" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="record">record</label>
-                                <input type="date" class="form-control" id="record" name="record" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="pic">pic</label>
-                                <input type="text" class="form-control" id="pic" name="pic" required>
+                                <label for="tanggal_upload">Tanggal Upload</label>
+                                <input type="date" class="form-control" id="tanggal_upload" name="tanggal_upload" required>
                             </div>
                             <!-- <div class="form-group">
                             <label for="image">Upload Pdf / Gambar Dokumen</label>

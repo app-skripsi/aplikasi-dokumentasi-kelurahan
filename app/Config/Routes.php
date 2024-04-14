@@ -81,4 +81,5 @@ $routes->post('dokumen/store', 'DokumenController::store');
 $routes->get('dokumen/edit/(:alphanum)', 'DokumenController::edit/$1');
 $routes->post('dokumen/update/(:num)', 'DokumenController::update/$1');
 $routes->get('dokumen/delete/(:alphanum)', 'DokumenController::delete/$1');
+$routes->get('dokumen/xls', 'DokumenController::xls');
 
