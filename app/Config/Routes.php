@@ -58,6 +58,7 @@ $routes->post('arsip/store', 'ArsipController::store');
 $routes->get('arsip/edit/(:alphanum)', 'ArsipController::edit/$1');
 $routes->post('arsip/update/(:num)', 'ArsipController::update/$1');
 $routes->get('arsip/delete/(:alphanum)', 'ArsipController::delete/$1');
+$routes->get('arsip/xls', 'ArsipController::xls');
 
 // Routing for users
 $routes->get('users', 'UsersController::index');

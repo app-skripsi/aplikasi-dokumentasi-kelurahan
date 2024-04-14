@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\ArsipModel;
 use App\Models\PegawaiModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ArsipController extends BaseController
 {
@@ -113,5 +115,89 @@ class ArsipController extends BaseController
 			session()->setFlashdata('warning', 'Delete Data  Berhasil');
 			return redirect()->to(base_url('arsip'));
 		}
+	}
+	
+	public function xls()
+	{
+		$exportXls = $this->arsip->findAll();
+		$spreadsheet = new Spreadsheet();
+		$spreadsheet->setActiveSheetIndex(0)
+			->setCellValue('A1', 'Laporan Data Arsip Kelurahan Jatiwarna')
+			->setCellValue('A2', 'Tanggal: ' . date('Y-m-d'))
+			->setCellValue('B3', 'Kode Arsip')
+			->setCellValue('C3', 'Nama Arsip')
+			->setCellValue('D3', 'Jenis Arsip')
+			->setCellValue('E3', 'Tanggal Pembuatan')
+			->setCellValue('F3', 'Lokasi Arsip');
+	
+		// Merge cells for the title
+		$spreadsheet->getActiveSheet()->mergeCells('A1:F1');
+		$spreadsheet->getActiveSheet()->mergeCells('A2:F2');
+		// Center align the title
+		$spreadsheet->getActiveSheet()->getStyle('A2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
+		$spreadsheet->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+		$spreadsheet->getActiveSheet()->getStyle('A3')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+
+		// Add yellow background and border to the title row
+		$spreadsheet->getActiveSheet()->getStyle('A1:F2')->applyFromArray([
+			'fill' => [
+				'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+				'startColor' => ['rgb' => 'FFFF00'], // Yellow background
+			],
+			'borders' => [
+				'allBorders' => [
+					'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+				],
+			],
+		]);
+	
+		// Set column widths
+		$spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(20); // Width for cell A2
+		$spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(30);
+		$spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(30);
+		$spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(30);
+		$spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(30);
+		$spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(30);
+	    $spreadsheet->getDefaultStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+
+		// Center align column headers
+		$spreadsheet->getActiveSheet()->getStyle('B3:F3')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+	
+		$column = 4;
+		$rowNumber = 1;
+	
+		foreach ($exportXls as $arsips) {
+			$spreadsheet->setActiveSheetIndex(0)
+				->setCellValue('B' . $column, $arsips['kode_arsip'])
+				->setCellValue('C' . $column, $arsips['nama_arsip'])
+				->setCellValue('D' . $column, $arsips['jenis_arsip'])
+				->setCellValue('E' . $column, $arsips['tanggal_pembuatan'])
+				->setCellValue('F' . $column, $arsips['lokasi_arsip']);
+	
+			// Set auto numbering on the left side of the data
+			$spreadsheet->getActiveSheet()->setCellValue('A' . $column, $rowNumber++);
+			$spreadsheet->getActiveSheet()->getStyle('A' . $column . ':F' . $column)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+			$column++;
+		}
+	
+		// Set border for data cells
+		$highestColumn = $spreadsheet->getActiveSheet()->getHighestColumn();
+		$highestRow = $spreadsheet->getActiveSheet()->getHighestRow();
+		$range = 'A3:' . $highestColumn . $highestRow;
+		$spreadsheet->getActiveSheet()->getStyle($range)->applyFromArray([
+			'borders' => [
+				'allBorders' => [
+					'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+				],
+			],
+		]);
+		$spreadsheet->getActiveSheet()->setCellValue('A3', 'No');
+		$writer = new Xlsx($spreadsheet);
+		$filename = date('Y-m-d-His'). '-Data-Arsip';
+		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		header('Content-Disposition: attachment;filename=' . $filename . '.xlsx');
+		header('Cache-Control: max-age=0');
+
+		$writer->save('php://output');
 	}
 }
