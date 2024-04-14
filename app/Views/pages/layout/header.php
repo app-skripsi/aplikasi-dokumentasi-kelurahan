@@ -31,11 +31,11 @@
                             <a href="<?php echo base_url('/pegawai'); ?>" class="btn btn-primary animate-up-2 w-100">Data Pegawai</a>
                         </li> -->
                     <li class="col-md-3 col-lg-auto mb-2 mb-lg-0">
-                        <a href="<?php echo base_url('/arsip'); ?>" class="btn btn-primary animate-up-2 w-100">Data
+                        <a href="<?php echo base_url('/arsip'); ?>" class="btn btn-primary animate-up-2 w-100">Dokumentasi
                             Arsip</a>
                     </li>
                     <li class="col-md-3 col-lg-auto mb-2 mb-lg-0">
-                        <a href="<?php echo base_url('/dokumen'); ?>" class="btn btn-primary animate-up-2 w-100">Data
+                        <a href="<?php echo base_url('/dokumen'); ?>" class="btn btn-primary animate-up-2 w-100">Dokumentasi
                             Dokumen</a>
                     </li>
                     <!-- <li class="col-md-3 col-lg-auto mb-2 mb-lg-0">

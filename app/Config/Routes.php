@@ -59,6 +59,7 @@ $routes->get('arsip/edit/(:alphanum)', 'ArsipController::edit/$1');
 $routes->post('arsip/update/(:num)', 'ArsipController::update/$1');
 $routes->get('arsip/delete/(:alphanum)', 'ArsipController::delete/$1');
 $routes->get('arsip/xls', 'ArsipController::xls');
+$routes->get('arsip/pdf', 'ArsipController::pdf');
 
 // Routing for users
 $routes->get('users', 'UsersController::index');
@@ -82,4 +83,5 @@ $routes->get('dokumen/edit/(:alphanum)', 'DokumenController::edit/$1');
 $routes->post('dokumen/update/(:num)', 'DokumenController::update/$1');
 $routes->get('dokumen/delete/(:alphanum)', 'DokumenController::delete/$1');
 $routes->get('dokumen/xls', 'DokumenController::xls');
+$routes->get('dokumen/pdf', 'DokumenController::pdf');
 

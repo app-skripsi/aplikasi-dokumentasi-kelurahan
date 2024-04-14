@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\DokumenModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use TCPDF;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class DokumenController extends BaseController
@@ -43,10 +44,10 @@ class DokumenController extends BaseController
 		$validation =  \Config\Services::validation();
 		$data = array(
 			'nama_dokumen'        	=> $this->request->getPost('nama_dokumen'),
-			'tipe_dokumen'         		=> $this->request->getPost('tipe_dokumen'),
-			'jenis_dokumen'         		=> $this->request->getPost('jenis_dokumen'),
-			'lokasi_dokumen'         		=> $this->request->getPost('lokasi_dokumen'),
-			'tanggal_upload'         		=> $this->request->getPost('tanggal_upload'),
+			'tipe_dokumen'         	=> $this->request->getPost('tipe_dokumen'),
+			'jenis_dokumen'         => $this->request->getPost('jenis_dokumen'),
+			'lokasi_dokumen'        => $this->request->getPost('lokasi_dokumen'),
+			'tanggal_upload'        => $this->request->getPost('tanggal_upload'),
 		);
 
 		if ($validation->run($data, 'dokumen') == FALSE) {
@@ -88,10 +89,10 @@ class DokumenController extends BaseController
 
 		$data = array(
 			'nama_dokumen'        	=> $this->request->getPost('nama_dokumen'),
-			'tipe_dokumen'         		=> $this->request->getPost('tipe_dokumen'),
-			'jenis_dokumen'         		=> $this->request->getPost('jenis_dokumen'),
-			'lokasi_dokumen'         		=> $this->request->getPost('lokasi_dokumen'),
-			'tanggal_upload'         		=> $this->request->getPost('tanggal_upload'),
+			'tipe_dokumen'         	=> $this->request->getPost('tipe_dokumen'),
+			'jenis_dokumen'         => $this->request->getPost('jenis_dokumen'),
+			'lokasi_dokumen'        => $this->request->getPost('lokasi_dokumen'),
+			'tanggal_upload'        => $this->request->getPost('tanggal_upload'),
 
 		);
 		if ($validation->run($data, 'dokumen') == FALSE) {
@@ -203,4 +204,51 @@ class DokumenController extends BaseController
 
 		$writer->save('php://output');
 	}
+
+	public function pdf(){
+    // proteksi halaman
+    $data = array(
+        'dokumen'    => $this->dokumen->getData(),
+    );
+    $html =  view('pages/dokumen/pdf', $data);
+
+    // test pdf
+
+    $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, 'A4', true, 'UTF-8', false);
+    // set font tulisan
+    // set document information
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('Adelia');
+    $pdf->SetTitle('Laporan Data Dokumen Kelurahan Jatiwarna');
+    $pdf->SetSubject('Laporan Data Dokumen');
+    // set default header data
+	$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH,  'Laporan Dokumen Kelurahan Jatiwarna',' Jalan Pasar Kecapi, Jatiwarna, Pondokmelati, RT.003/RW.001, Jatiwarna, Bekasi, Kota Bks, Jawa Barat 17415', PDF_HEADER_STRING);
+	$pdf->SetY(50); // Ubah angka ini sesuai dengan posisi yang diinginkan
+	$pdf->Line(10, $pdf->GetY(), $pdf->getPageWidth() - 10, $pdf->GetY());
+
+	// set header and footer fonts
+    $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+    $pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+    // set default monospaced font
+    $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+    // set margins
+    $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+    $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+    $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+    // set auto page breaks
+    $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    $pdf->AddPage();
+    // Set header
+    $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', 12));
+    $pdf->SetFont('dejavusans', '', 10);
+   
+	// write html
+    $pdf->writeHTML($html, true, false, true, false, '');
+    $this->response->setContentType('application/pdf');
+    // ouput pdf
+    $pdf->Output('Data-Dokumen.pdf', 'I');
+}
+
 }
