@@ -27,20 +27,20 @@ class DokumenController extends BaseController
 	public function create()
 	{
 		// proteksi halaman
-		// if (session()->get('username') == '') {
-		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-		// 	return redirect()->to(base_url('login'));
-		// }
+		if (session()->get('username') == '') {
+			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('login'));
+		}
 		return view('pages/dokumen/create');
 	}
 
 	public function store()
 	{
 		// proteksi halaman
-		// if (session()->get('username') == '') {
-		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-		// 	return redirect()->to(base_url('login'));
-		// }
+		if (session()->get('username') == '') {
+			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('login'));
+		}
 		$validation =  \Config\Services::validation();
 		$data = array(
 			'nama_dokumen'        	=> $this->request->getPost('nama_dokumen'),
@@ -68,10 +68,10 @@ class DokumenController extends BaseController
 	public function edit($id)
 	{
 		// proteksi halaman
-		// if (session()->get('username') == '') {
-		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-		// 	return redirect()->to(base_url('login'));
-		// }
+		if (session()->get('username') == '') {
+			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('login'));
+		}
 		$data['pages/dokumen'] = $this->dokumen->getData($id);
 		echo view('pages/dokumen/edit', $data);
 	}
@@ -79,10 +79,10 @@ class DokumenController extends BaseController
 	public function update()
 	{
 		// proteksi halaman
-		// if (session()->get('username') == '') {
-		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-		// 	return redirect()->to(base_url('login'));
-		// }
+		if (session()->get('username') == '') {
+			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('login'));
+		}
 		$id = $this->request->getPost('id');
 
 		$validation =  \Config\Services::validation();

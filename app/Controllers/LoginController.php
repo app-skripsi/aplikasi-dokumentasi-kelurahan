@@ -27,7 +27,7 @@ class LoginController extends BaseController
 
 
         if ($cek !== null && ($cek['username'] == $username) && ($cek['password'] == $password)) {
-            // pengecekan jika username dan password benar 
+            // pengecekan jika username dan password benar
             session()->set('nama_user', $cek['nama_user']);
             session()->set('username', $cek['username']);
             session()->set('level', $cek['level']);
@@ -35,7 +35,7 @@ class LoginController extends BaseController
         } else {
             // jika pengecekan salah 
             session()->setFlashData('gagal', 'Username atau password tidak benar');
-            return redirect()->to(base_url('login'));
+            return redirect()->to(base_url('/'));
         }
     }
 
@@ -45,6 +45,6 @@ class LoginController extends BaseController
         session()->remove('username');
         session()->remove('level');
         session()->setFlashData('sukses', 'Anda Berhasil Logout');
-        return redirect()->to(base_url('login'));
+        return redirect()->to(base_url('/'));
     }
 }

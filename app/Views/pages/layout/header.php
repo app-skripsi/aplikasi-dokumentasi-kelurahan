@@ -47,7 +47,13 @@
                 <button class="btn btn-primary" data-toggle="modal" data-target="#logoutModal">
                     <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg"
                         class="rounded-circle" alt="User Avatar" style="width: 30px; height: 30px;">
-                    <span class="d-block mt-1">Administrator</span>
+                    <span class="d-block mt-1"><?= session()->get('nama_user'); ?> | <?php if (session()->get('level') == 1) {
+                                                                                                                        echo 'Admin';
+                                                                                                                    } elseif (session()->get('level') == 2) {
+                                                                                                                        echo 'Ketua';
+                                                                                                                    } else {
+                                                                                                                        echo 'Guest';
+                                                                                                                    } ?></span></span>
                 </button>
                 <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbar_global"
                     aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">

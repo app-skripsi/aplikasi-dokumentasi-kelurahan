@@ -35,10 +35,10 @@ class ArsipController extends BaseController
 	public function store()
 	{
 		// proteksi halaman
-		// if (session()->get('username') == '') {
-		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-		// 	return redirect()->to(base_url('login'));
-		// }
+		if (session()->get('username') == '') {
+			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('login'));
+		}
 		$validation =  \Config\Services::validation();
 		$data = array(
 			'kode_arsip'        	=> $this->request->getPost('kode_arsip'),
@@ -65,10 +65,10 @@ class ArsipController extends BaseController
 	public function edit($id)
 	{
 		// proteksi halaman
-		// if (session()->get('username') == '') {
-		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-		// 	return redirect()->to(base_url('login'));
-		// }
+		if (session()->get('username') == '') {
+			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('login'));
+		}
 		
 		$arsip['arsip'] = $this->arsip->getData($id);
 		echo view('pages/arsip/edit', $arsip);
@@ -77,10 +77,10 @@ class ArsipController extends BaseController
 	public function update()
 	{
 		// proteksi halaman
-		// if (session()->get('username') == '') {
-		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-		// 	return redirect()->to(base_url('login'));
-		// }
+		if (session()->get('username') == '') {
+			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('login'));
+		}
 		$id = $this->request->getPost('id');
 
 		$validation =  \Config\Services::validation();
@@ -107,10 +107,10 @@ class ArsipController extends BaseController
 	public function delete($id)
 	{
 		// proteksi halaman
-		// if (session()->get('username') == '') {
-		// 	session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-		// 	return redirect()->to(base_url('login'));
-		// }
+		if (session()->get('username') == '') {
+			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('login'));
+		}
 		$hapus = $this->arsip->deleteData($id);
 		if ($hapus) {
 			session()->setFlashdata('warning', 'Delete Data  Berhasil');
