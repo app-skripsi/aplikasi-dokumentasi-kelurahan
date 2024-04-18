@@ -13,6 +13,11 @@ class LoginController extends BaseController
         $this->login = new UserModel();
     }
 
+    public function cek_dashboard()
+    {
+        return view('index');
+    }
+
     public function index()
     {
         return view('pages/secure/login');

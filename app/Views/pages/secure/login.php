@@ -13,52 +13,18 @@
                                 <h2 class="h4">Kelurahan  Jatiwarna</h2>
                             </div>
                             <div class="card-body">
-                            <?php
-                                        if (!empty(session()->getFlashdata('sukses'))) { ?>
-                                            <div class="alert alert-success">
-                                                <?php echo session()->getFlashdata('sukses'); ?>
-                                            </div>
-                                        <?php } ?>
-
-                                        <?php if (!empty(session()->getFlashdata('haruslogin'))) { ?>
-                                            <div class="alert alert-info">
-                                                <?php echo session()->getFlashdata('haruslogin'); ?>
-                                            </div>
-                                        <?php } ?>
-
-                                        <?php if (!empty(session()->getFlashdata('gagal'))) { ?>
-                                            <div class="alert alert-warning">
-                                                <?php echo session()->getFlashdata('gagal'); ?>
-                                            </div>
-                                        <?php } ?>
-                                        <?php
-                                        echo form_open('LoginController/cek_login');
-                                        ?>
-                                <form >
-                                    <!-- Form -->
-                                    <div class="form-group">
-                                        <label for="username">Username</label>
-                                        <div class="input-group mb-4">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><span class="fas fa-user-alt"></span></span>
-                                            </div>
-                                            <input class="form-control" id="username" placeholder="ketika username disini ..." type="text" aria-label="email adress">
-                                        </div>
+                            <?php if (!empty(session()->getFlashdata('sukses'))) { ?><div class="alert alert-success"><?php echo session()->getFlashdata('sukses'); ?></div><?php } ?>
+                                    <?php if (!empty(session()->getFlashdata('haruslogin'))) { ?><div class="alert alert-info"><?php echo session()->getFlashdata('haruslogin'); ?></div><?php } ?>
+                                    <?php if (!empty(session()->getFlashdata('gagal'))) { ?><div class="alert alert-warning"><?php echo session()->getFlashdata('gagal'); ?></div><?php } ?>
+                                    <?php echo form_open('authentication'); ?>
+                                    <form class="p-3 mt-3">
+                                    <div class="form-field d-flex align-items-center">
+                                        <input type="text" name="username" id="username" placeholder="Username">
                                     </div>
-                                    <!-- End of Form -->
-                                    <div class="form-group">
-                                        <!-- Form -->
-                                        <div class="form-group">
-                                            <label for="password">Password</label>
-                                            <div class="input-group mb-4">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><span class="fas fa-unlock-alt"></span></span>
-                                                </div>
-                                                <input class="form-control" id="password" placeholder="Password" type="password" aria-label="Password" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-block btn-primary">Login</button>
+                                    <div class="form-field d-flex align-items-center">
+                                        <input type="password" name="password" id="password" placeholder="Password">
+                                    </div><br>
+                                    <button  type="submit" class="btn mt-3">Login</button>
                                 </form>
                                 <?php echo form_close(); ?>
                                 <div class="mt-3 mb-4 text-center">

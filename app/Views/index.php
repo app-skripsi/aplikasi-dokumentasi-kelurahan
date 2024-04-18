@@ -6,7 +6,6 @@
             <div class="container">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-info">
-                        <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo view("/dashboard") ?>">Home</a></li>
                         <!-- <li class="breadcrumb-item"><a href="#">Library</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Data</li> -->
                     </ol>

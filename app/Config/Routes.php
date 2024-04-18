@@ -17,14 +17,17 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('LoginController');
 $routes->setDefaultMethod('/');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
 
-$routes->get('/dashboard', 'Home::dashboard');
 $routes->get('/', 'LoginController::index');
+$routes->get('/dashboard', 'LoginController::cek_dashboard');
+$routes->post('authentication', 'LoginController::cek_login');
+$routes->get('/logout', 'LoginController::logout');
+
 
 $routes->get('arsip', 'ArsipController::index');
 $routes->get('arsip/create', 'ArsipController::create');
