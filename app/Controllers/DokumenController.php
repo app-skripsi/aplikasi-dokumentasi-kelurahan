@@ -72,7 +72,7 @@ class DokumenController extends BaseController
 			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('login'));
 		}
-		$data['pages/dokumen'] = $this->dokumen->getData($id);
+		$data['dokumen'] = $this->dokumen->getData($id);
 		echo view('pages/dokumen/edit', $data);
 	}
 
@@ -117,7 +117,7 @@ class DokumenController extends BaseController
 		$hapus = $this->dokumen->deleteData($id);
 		if ($hapus) {
 			session()->setFlashdata('warning', 'Delete Data  Berhasil');
-			return redirect()->to(base_url('pages/dokumen'));
+			return redirect()->to(base_url('dokumen'));
 		}
 	}
 
