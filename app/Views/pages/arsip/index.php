@@ -74,11 +74,11 @@
                       <td style="text-align: center">
                         <div class="btn-group">
                           <a href="<?php echo base_url('arsip/edit/' . $row['id']); ?>" class="btn btn-sm btn-success">
-                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-edit">Edit</i>
                           </a>
                           <a href="<?php echo base_url('arsip/delete/' . $row['id']); ?>" class="btn btn-sm btn-danger"
                             onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?');">
-                            <i class="fa fa-trash-alt"></i>
+                            <i class="fa fa-trash-alt">Delete</i>
                           </a>
                         </div>
                       </td>

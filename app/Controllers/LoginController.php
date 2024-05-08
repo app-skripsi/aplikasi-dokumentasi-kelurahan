@@ -38,7 +38,7 @@ class LoginController extends BaseController
             session()->set('level', $cek['level']);
             return redirect()->to(base_url('/dashboard'));
         } else {
-            // jika pengecekan salah 
+            // jika pengecekan salah
             session()->setFlashData('gagal', 'Username atau password tidak benar');
             return redirect()->to(base_url('/'));
         }

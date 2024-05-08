@@ -3,7 +3,7 @@
         class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-light navbar-transparent navbar-theme-primary">
         <div class="container position-relative">
             <a class="navbar-brand shadow-soft py-2 px-3 rounded border border-light mr-lg-4"
-                href="<?php echo base_url('/'); ?>">
+                href="<?php echo base_url('/dashboard'); ?>">
                 <img class="navbar-brand-dark" src="<?php echo base_url('./assets/img/brand/dark.svg');  ?>" alt="Logo light">
                 <img class="navbar-brand-light" src="<?php echo base_url('./assets/img/brand/dark.svg'); ?>" alt="Logo dark">
             </a>
@@ -11,7 +11,7 @@
                 <div class="navbar-collapse-header">
                     <div class="row">
                         <div class="col-6 collapse-brand">
-                            <a href="<?php echo base_url('/'); ?>"
+                            <a href="<?php echo base_url('/dashboard'); ?>"
                                 class="navbar-brand shadow-soft py-2 px-3 rounded border border-light">
                                 <img src="<?php echo base_url('./assets/img/brand/dark.svg'); ?>" alt="Themesberg logo">
                             </a>
@@ -25,11 +25,8 @@
                 </div>
                 <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
                     <li class="col-md-3 col-lg-auto mb-2 mb-lg-0">
-                        <a href="<?php echo base_url('/'); ?>" class="btn btn-primary animate-up-2 w-100">Home</a>
+                        <a href="<?php echo base_url('/dashboard'); ?>" class="btn btn-primary animate-up-2 w-100">Home</a>
                     </li>
-                    <!-- <li class="col-md-3 col-lg-auto mb-2 mb-lg-0">
-                            <a href="<?php echo base_url('/pegawai'); ?>" class="btn btn-primary animate-up-2 w-100">Data Pegawai</a>
-                        </li> -->
                     <li class="col-md-3 col-lg-auto mb-2 mb-lg-0">
                         <a href="<?php echo base_url('/arsip'); ?>" class="btn btn-primary animate-up-2 w-100">Dokumentasi
                             Arsip</a>
@@ -38,9 +35,6 @@
                         <a href="<?php echo base_url('/dokumen'); ?>" class="btn btn-primary animate-up-2 w-100">Dokumentasi
                             Dokumen</a>
                     </li>
-                    <!-- <li class="col-md-3 col-lg-auto mb-2 mb-lg-0">
-                            <a href="<?php echo base_url('/users'); ?>" class="btn btn-primary animate-up-2 w-100">Data Users</a>
-                        </li> -->
                 </ul>
             </div>
             <div class="d-flex align-items-center">
@@ -83,7 +77,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <a href="<?php echo base_url('/login') ?>" class="btn btn-primary">Logout</a>
+                <a href="<?php echo base_url('/') ?>" class="btn btn-primary">Logout</a>
             </div>
         </div>
     </div>
