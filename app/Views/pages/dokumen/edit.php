@@ -70,7 +70,7 @@
                                 ?>
                             </div>
                             <div class="form-group">
-                                <?php echo form_label('Tanggal Upload', 'tanggal_upload'); ?>
+                                <?php echo form_label('Tanggal', 'tanggal_upload'); ?>
                                 <?php echo form_input(
                                     'tanggal_upload',
                                     $dokumen['tanggal_upload'],

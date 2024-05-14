@@ -52,7 +52,7 @@
                                 <input type="text" class="form-control" id="lokasi_dokumen" name="lokasi_dokumen" required>
                             </div>
                             <div class="form-group">
-                                <label for="tanggal_upload">Tanggal Upload</label>
+                                <label for="tanggal_upload">Tanggal</label>
                                 <input type="date" class="form-control" id="tanggal_upload" name="tanggal_upload" required>
                             </div>
                             <!-- <div class="form-group">
