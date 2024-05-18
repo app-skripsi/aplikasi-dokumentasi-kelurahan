@@ -60,7 +60,7 @@
                                 <input type="file"class="form-control" id="doc" name="doc" accept="image/*, .pdf" required>
                             </div> -->
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><a href="<?= site_url('dokumen') ?>" style="color: white;">Kembali</a></button>
                         </form>
                     </div>
                 </div><br>
