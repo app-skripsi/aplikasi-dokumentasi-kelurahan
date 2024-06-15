@@ -24,9 +24,10 @@ class DokumenMigration extends Migration
                 'constraint' => ['Public', 'Private', 'Confidential'],
                 'default' => 'Public',
             ],
-            'jenis_dokumen' => [
-                'type' => 'ENUM',
-                'constraint' => ['Surat', 'Kontrak', 'Laporan', 'Dokumen Pribadi', 'Dokumen Kepegawaian', 'Dokumen Perizinan', 'Arsip Historis', 'Dokumen Legal', 'Dokumen Proyek', 'Dokumen Pendukung Administrasi', 'Dokumen Pendidikan', 'Lainnya'],
+            'jenis_id' => [
+                'type'          => 'INT',
+                'constraint'    => 5,
+                'unsigned'      => true,
             ],
             'lokasi_dokumen' => [
                 'type' => 'VARCHAR',
@@ -38,6 +39,7 @@ class DokumenMigration extends Migration
             ]
         ]);
         $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('jenis_id','jenis','id','cascade','cascade');
         $this->forge->createTable('dokumen');
     }
 

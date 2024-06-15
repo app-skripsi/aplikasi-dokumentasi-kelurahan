@@ -22,14 +22,16 @@
                 <div class="row">
                     <div class="container">
                         <div class="form-group">
-                        <a href="<?php echo base_url("dokumen/create") ?>" type="button"
-                class="btn btn-primary mt-3 float-right btn-plus" style="margin-bottom: 10px;"><i
-                  class="fas fa-plus"></i>Add New</a>
-              </a>
-              <a href="<?php echo base_url("dokumen/xls") ?>" type="button" class="btn btn-primary mt-3 float-left" style="margin-left: 10px;"><em><em></em></em>
-                <i class="fas fa-file-excel"></i> Export Excel
-              </a>
-                            <a href="<?php echo base_url("dokumen/pdf ") ?>" type="button" class="btn btn-primary mt-3 float-left" style="margin-left: 10px;">
+                            <a href="<?php echo base_url("dokumen/create") ?>" type="button"
+                                class="btn btn-primary mt-3 float-right btn-plus" style="margin-bottom: 10px;"><i
+                                    class="fas fa-plus"></i>Add New</a>
+                            </a>
+                            <a href="<?php echo base_url("dokumen/xls") ?>" type="button"
+                                class="btn btn-primary mt-3 float-left" style="margin-left: 10px;"><em><em></em></em>
+                                <i class="fas fa-file-excel"></i> Export Excel
+                            </a>
+                            <a href="<?php echo base_url("dokumen/pdf ") ?>" type="button"
+                                class="btn btn-primary mt-3 float-left" style="margin-left: 10px;">
                                 <i class="fas fa-file-pdf"></i> Export PDF
                             </a>
                         </div>
@@ -63,7 +65,7 @@
                                                 <?php echo $row['tipe_dokumen']; ?>
                                             </td>
                                             <td style="text-align: center">
-                                                <?php echo $row['jenis_dokumen']; ?>
+                                                <?php echo $row['nama']; ?>
                                             </td>
                                             <td style="text-align: center">
                                                 <?php echo $row['lokasi_dokumen']; ?>

@@ -64,26 +64,13 @@
                                 ?>
                             </div>
                             <div class="form-group">
-                                <?php echo form_label('Jenis Arsip', 'jenis_arsip'); ?>
-                                <?php
-                                $options = array(
-                                    'Surat' => 'Surat',
-                                    'Kontrak' => 'Kontrak',
-                                    'Laporan' => 'Laporan',
-                                    'Dokumen Pribadi' => 'Dokumen Pribadi',
-                                    'Dokumen Kepegawaian' => 'Dokumen Kepegawaian',
-                                    'Dokumen Perizinan' => 'Dokumen Perizinan',
-                                    'Arsip Historis' => 'Arsip Historis',
-                                    'Dokumen Legal' => 'Dokumen Legal',
-                                    'Dokumen Proyek' => 'Dokumen Proyek',
-                                    'Dokumen Pendukung Administrasi' => 'Dokumen Pendukung Administrasi',
-                                    'Dokumen Pendidikan' => 'Dokumen Pendidikan'
-                                );
-                                echo form_dropdown('jenis_arsip', $options, $arsip['jenis_arsip'], 'class="form-control"');
-                                ?>
-                            </div>
-                            <a href="<?php echo base_url('arsip'); ?>" class="btn btn-outline-info"> <i class="nav-icon fas fa-backward"></i> Kembali</a>
-                            <button type="submit" class="btn btn-primary"> <i class="nav-icon fas fa-save"></i> Perbarui Data</button>
+                                <?php echo form_label('Jenis', 'jenis_id'); ?>
+                                <?php echo form_dropdown('jenis_id', $jenis, $pengajian['jenis_id'], ['class' => 'form-control']); ?>
+                            </div><br>
+                            <a href="<?php echo base_url('arsip'); ?>" class="btn btn-outline-info"> <i
+                                    class="nav-icon fas fa-backward"></i> Kembali</a>
+                            <button type="submit" class="btn btn-primary"> <i class="nav-icon fas fa-save"></i> Perbarui
+                                Data</button>
                         </form>
                     </div>
                 </div><br>

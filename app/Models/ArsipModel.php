@@ -7,16 +7,17 @@ use CodeIgniter\Model;
 class ArsipModel extends Model
 {
     protected $table            = 'arsip';
-    protected $allowedFields = [ 'number','kode', 'nama','type','date', 'record','pic'];
 
 	public function getData($id = false)
 	{
 		if ($id === false) {
 			return $this->table('arsip')
+				->join('jenis', 'jenis.id = arsip.jenis_id')
 				->get()
 				->getResultArray();
 		} else {
 			return $this->table('arsip')
+				->join('jenis', 'jenis.id = arsip.jenis_id')
 				->where('arsip.id', $id)
 				->get()
 				->getRowArray();

@@ -25,10 +25,12 @@
                 class="btn btn-primary mt-3 float-right btn-plus" style="margin-bottom: 10px;"><i
                   class="fas fa-plus"></i>Add New</a>
               </a>
-              <a href="<?php echo base_url("arsip/xls") ?>" type="button" class="btn btn-primary mt-3 float-left" style="margin-left: 10px;"><em><em></em></em>
+              <a href="<?php echo base_url("arsip/xls") ?>" type="button" class="btn btn-primary mt-3 float-left"
+                style="margin-left: 10px;"><em><em></em></em>
                 <i class="fas fa-file-excel"></i> Export Excel
               </a>
-              <a href="<?php echo base_url("arsip/pdf") ?>" type="button" class="btn btn-primary mt-3 float-left" style="margin-left: 10px;">
+              <a href="<?php echo base_url("arsip/pdf") ?>" type="button" class="btn btn-primary mt-3 float-left"
+                style="margin-left: 10px;">
                 <i class="fas fa-file-pdf"></i> Export PDF
               </a>
             </div>
@@ -63,7 +65,7 @@
                         <?php echo $row['nama_arsip']; ?>
                       </td>
                       <td style="text-align: center">
-                        <?php echo $row['jenis_arsip']; ?>
+                        <?php echo $row['nama']; ?>
                       </td>
                       <td style="text-align: center">
                         <?php echo $row['tanggal_pembuatan']; ?>

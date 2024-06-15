@@ -25,9 +25,10 @@ class ArsipMigration extends Migration
                 'constraint' => 255,
                 'null' => true,
             ],
-            'jenis_arsip' => [
-                'type' => 'ENUM',
-                'constraint' => ['Surat', 'Kontrak', 'Laporan', 'Dokumen Pribadi', 'Dokumen Kepegawaian', 'Dokumen Perizinan', 'Arsip Historis', 'Dokumen Legal', 'Dokumen Proyek', 'Dokumen Pendukung Administrasi', 'Dokumen Pendidikan'],
+            'jenis_id' => [
+                'type'          => 'INT',
+                'constraint'    => 5,
+                'unsigned'      => true,
             ],
             'tanggal_pembuatan' => [
                 'type' => 'DATE',
@@ -39,6 +40,7 @@ class ArsipMigration extends Migration
             ]
         ]);
         $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('jenis_id','jenis','id','cascade','cascade');
         $this->forge->createTable('arsip');
     }
 

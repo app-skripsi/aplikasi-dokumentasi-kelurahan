@@ -66,7 +66,7 @@ class Validation
     public $arsip = [
 		'kode_arsip'        => 'required',
 		'nama_arsip'   		=> 'required',
-		'jenis_arsip'   		=> 'required',
+		'jenis_id'   		=> 'required',
 		'tanggal_pembuatan'   		=> 'required',
 		'lokasi_arsip'   		=> 'required',
 	];
@@ -79,8 +79,8 @@ class Validation
 		'nama_arsip'   		        => [
 			'required'			=> 'nama_arsip perlu di isi'
         ],
-        'jenis_arsip'   		        => [
-			'required'			=> 'jenis_arsip perlu di isi'
+        'jenis_id'   		        => [
+			'required'			=> 'jenis_id perlu di isi'
 		],
         'tanggal_pembuatan'   		        => [
 			'required'			=> 'tanggal_pembuatan perlu di isi'
@@ -95,9 +95,9 @@ class Validation
 
 
     public $dokumen = [
-		'nama_dokumen'        => 'required',
+		'nama_dokumen'        	=> 'required',
 		'tipe_dokumen'   		=> 'required',
-		'jenis_dokumen'   		=> 'required',
+		'jenis_id'   			=> 'required',
 		'lokasi_dokumen'   		=> 'required',
 		'tanggal_upload'   		=> 'required',
 
@@ -111,8 +111,8 @@ class Validation
 		'tipe_dokumen'   		        => [
 			'required'			=> 'tipe_dokumen perlu di isi'
         ],
-        'jenis_dokumen'   		        => [
-			'required'			=> 'jenis_dokumen perlu di isi'
+        'jenis_id'   		        => [
+			'required'			=> 'jenis_id perlu di isi'
 		],
         'lokasi_dokumen'   		        => [
 			'required'			=> 'lokasi_dokumen perlu di isi'

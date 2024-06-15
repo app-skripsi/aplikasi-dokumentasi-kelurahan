@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ArsipModel;
-use App\Models\PegawaiModel;
+use App\Models\JenisModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use TCPDF;
@@ -12,24 +12,28 @@ use TCPDF;
 class ArsipController extends BaseController
 {
     protected $arsip;
-	protected $pegawai;
+	protected $jenis;
 
     public function __construct()
 	{
 		helper(['form']);
 		$this->arsip = new ArsipModel();
-		$this->pegawai = new PegawaiModel();
+		$this->jenis = new JenisModel();
 	}
 
 	public function index()
 	{
-		$data['arsip'] = $this->arsip->findAll();
+		$data['arsip'] = $this->arsip->select('arsip.*, jenis.nama')
+		->join('jenis', 'jenis.id = arsip.jenis_id')
+		->findAll();
 		echo view('pages/arsip/index', $data);
 	}
 
 	public function create()
 	{
-		return view('pages/arsip/create', );
+		$jenis = $this->jenis->findAll();
+		$data = ['jenis' => $jenis];
+		return view('pages/arsip/create', $data);
 	}
 
 	public function store()
@@ -41,10 +45,10 @@ class ArsipController extends BaseController
 		}
 		$validation =  \Config\Services::validation();
 		$data = array(
-			'kode_arsip'        	=> $this->request->getPost('kode_arsip'),
+			'jenis_id' 					=> $this->request->getPost('jenis_id'),
+			'kode_arsip'        		=> $this->request->getPost('kode_arsip'),
 			'nama_arsip'         		=> $this->request->getPost('nama_arsip'),
-			'jenis_arsip'         		=> $this->request->getPost('jenis_arsip'),
-			'tanggal_pembuatan'         		=> $this->request->getPost('tanggal_pembuatan'),
+			'tanggal_pembuatan'         => $this->request->getPost('tanggal_pembuatan'),
 			'lokasi_arsip'         		=> $this->request->getPost('lokasi_arsip'),
 		);
 
@@ -69,9 +73,10 @@ class ArsipController extends BaseController
 			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('login'));
 		}
-		
-		$arsip['arsip'] = $this->arsip->getData($id);
-		echo view('pages/arsip/edit', $arsip);
+		$jenis = $this->jenis->findAll();
+		$data['jenis'] = ['' => 'Pilih jenis'] + array_column($jenis, 'nama', 'id');
+		$data['arsip'] = $this->arsip->getData($id);
+		echo view('pages/arsip/edit', $data);
 	}
 
 	public function update()
@@ -86,9 +91,9 @@ class ArsipController extends BaseController
 		$validation =  \Config\Services::validation();
 
 		$data = array(
+			'jenis_id'               => $this->request->getPost('jenis_id'),
 			'kode_arsip'        	=> $this->request->getPost('kode_arsip'),
 			'nama_arsip'         		=> $this->request->getPost('nama_arsip'),
-			'jenis_arsip'         		=> $this->request->getPost('jenis_arsip'),
 			'tanggal_pembuatan'         		=> $this->request->getPost('tanggal_pembuatan'),
 			'lokasi_arsip'         		=> $this->request->getPost('lokasi_arsip'),
 		);

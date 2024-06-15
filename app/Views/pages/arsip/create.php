@@ -32,31 +32,27 @@
                                 <input type="text" class="form-control" id="nama_arsip" name="nama_arsip" required>
                             </div>
                             <div class="form-group">
-                                <label for="jenis_arsip">Jenis Arsip</label>
-                                <select class="form-control" id="jenis_arsip" name="jenis_arsip" required>
-                                    <option value="Surat">Surat</option>
-                                    <option value="Kontrak">Kontrak</option>
-                                    <option value="Laporan">Laporan</option>
-                                    <option value="Dokumen Pribadi">Dokumen Pribadi</option>
-                                    <option value="Dokumen Kepegawaian">Dokumen Kepegawaian</option>
-                                    <option value="Dokumen Perizinan">Dokumen Perizinan</option>
-                                    <option value="Arsip Historis">Arsip Historis</option>
-                                    <option value="Dokumen Legal">Dokumen Legal</option>
-                                    <option value="Dokumen Proyek">Dokumen Proyek</option>
-                                    <option value="Dokumen Pendukung Administrasi">Dokumen Pendukung Administrasi</option>
-                                    <option value="Dokumen Pendidikan">Dokumen Pendidikan</option>
+                                <label class="form-label" for="jenis_id">Pilih Jenis </label>
+                                <select class="form-control" id="jenis_id" name="jenis_id">
+                                    <option value="">Pilih jenis</option> <!-- Tambahkan opsi ini -->
+
+                                    <?php foreach ($jenis as $jenisItem): ?>
+                                        <option value="<?= $jenisItem['id']; ?>"><?= $jenisItem['nama']; ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="tanggal_pembuatan">Tanggal Pembuatan</label>
-                                <input type="date" class="form-control" id="tanggal_pembuatan" name="tanggal_pembuatan" required>
+                                <input type="date" class="form-control" id="tanggal_pembuatan" name="tanggal_pembuatan"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label for="lokasi_arsip">Lokasi Arsip</label>
                                 <input type="text" class="form-control" id="lokasi_arsip" name="lokasi_arsip" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><a href="<?= site_url('arsip') ?>" style="color: white;">Kembali</a></button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><a
+                                    href="<?= site_url('arsip') ?>" style="color: white;">Kembali</a></button>
                         </form>
                     </div>
                 </div><br>

@@ -55,20 +55,9 @@
                                 ?>
                             </div>
                             <div class="form-group">
-                                <?php echo form_label('Jenis Dokumen', 'jenis_dokumen'); ?>
-                                <?php
-                                $options = array(
-                                    'Dokumen Pribadi' => 'Dokumen Pribadi',
-                                    'Dokumen Kepegawaian' => 'Dokumen Kepegawaian',
-                                    'Dokumen Perizinan' => 'Dokumen Perizinan',
-                                    'Dokumen Legal' => 'Dokumen Legal',
-                                    'Dokumen Proyek' => 'Dokumen Proyek',
-                                    'Dokumen Pendukung Administrasi' => 'Dokumen Pendukung Administrasi',
-                                    'Dokumen Pendidikan' => 'Dokumen Pendidikan'
-                                );
-                                echo form_dropdown('jenis_dokumen', $options, $dokumen['jenis_dokumen'], 'class="form-control"');
-                                ?>
-                            </div>
+                                <?php echo form_label('Jenis', 'jenis_id'); ?>
+                                <?php echo form_dropdown('jenis_id', $jenis, $pengajian['jenis_id'], ['class' => 'form-control']); ?>
+                            </div><br>
                             <div class="form-group">
                                 <?php echo form_label('Tanggal', 'tanggal_upload'); ?>
                                 <?php echo form_input(
@@ -79,9 +68,11 @@
 
                                 ?>
                             </div>
-                          
-                            <a href="<?php echo base_url('dokumen'); ?>" class="btn btn-outline-info"> <i class="nav-icon fas fa-backward"></i> Kembali</a>
-                            <button type="submit" class="btn btn-primary"> <i class="nav-icon fas fa-save"></i> Perbarui Data</button>
+
+                            <a href="<?php echo base_url('dokumen'); ?>" class="btn btn-outline-info"> <i
+                                    class="nav-icon fas fa-backward"></i> Kembali</a>
+                            <button type="submit" class="btn btn-primary"> <i class="nav-icon fas fa-save"></i> Perbarui
+                                Data</button>
                         </form>
                     </div>
                 </div><br>

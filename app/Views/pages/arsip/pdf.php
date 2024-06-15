@@ -1,26 +1,36 @@
 <html>
-    <head>
+
+<head>
     <style>
-        .table-header, .table-cell {
+        .table-header,
+        .table-cell {
             border: 1px solid black;
             padding: 8px;
             text-align: left;
         }
+
         .table-header {
             background-color: #f2f2f2;
         }
+
         .table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 0 10px; /* Add space between rows */
+            border-spacing: 0 10px;
+            /* Add space between rows */
         }
+
         @media (max-width: 768px) {
-            .table-header, .table-cell {
-                font-size: 12px; /* Adjust font size for smaller screens */
+
+            .table-header,
+            .table-cell {
+                font-size: 12px;
+                /* Adjust font size for smaller screens */
             }
         }
     </style>
-    </head>
+</head>
+
 <body>
     <div>
         <table class="table">
@@ -49,4 +59,5 @@
         </table>
     </div>
 </body>
+
 </html>

@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\DokumenModel;
+use App\Models\JenisModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use TCPDF;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -11,16 +12,21 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 class DokumenController extends BaseController
 {
     protected $dokumen;
+	protected $jenis;
 
     public function __construct()
 	{
 		helper(['form']);
 		$this->dokumen = new DokumenModel();
+		$this->jenis = new JenisModel();
+
 	}
 
 	public function index()
 	{
-		$data['dokumen'] = $this->dokumen->findAll();
+		$data['dokumen'] = $this->dokumen->select('dokumen.*, jenis.nama')
+		->join('jenis', 'jenis.id = dokumen.jenis_id')
+		->findAll();
 		echo view('pages/dokumen/index', $data);
 	}
 
@@ -31,7 +37,9 @@ class DokumenController extends BaseController
 			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('login'));
 		}
-		return view('pages/dokumen/create');
+		$jenis = $this->jenis->findAll();
+		$data = ['jenis' => $jenis];
+		return view('pages/dokumen/create', $data);
 	}
 
 	public function store()
@@ -45,7 +53,7 @@ class DokumenController extends BaseController
 		$data = array(
 			'nama_dokumen'        	=> $this->request->getPost('nama_dokumen'),
 			'tipe_dokumen'         	=> $this->request->getPost('tipe_dokumen'),
-			'jenis_dokumen'         => $this->request->getPost('jenis_dokumen'),
+			'jenis_id'         => $this->request->getPost('jenis_id'),
 			'lokasi_dokumen'        => $this->request->getPost('lokasi_dokumen'),
 			'tanggal_upload'        => $this->request->getPost('tanggal_upload'),
 		);
@@ -72,6 +80,8 @@ class DokumenController extends BaseController
 			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('login'));
 		}
+		$jenis = $this->jenis->findAll();
+		$data['jenis'] = ['' => 'Pilih jenis'] + array_column($jenis, 'nama', 'id');
 		$data['dokumen'] = $this->dokumen->getData($id);
 		echo view('pages/dokumen/edit', $data);
 	}
@@ -90,7 +100,7 @@ class DokumenController extends BaseController
 		$data = array(
 			'nama_dokumen'        	=> $this->request->getPost('nama_dokumen'),
 			'tipe_dokumen'         	=> $this->request->getPost('tipe_dokumen'),
-			'jenis_dokumen'         => $this->request->getPost('jenis_dokumen'),
+			'jenis_id'         => $this->request->getPost('jenis_id'),
 			'lokasi_dokumen'        => $this->request->getPost('lokasi_dokumen'),
 			'tanggal_upload'        => $this->request->getPost('tanggal_upload'),
 
@@ -174,7 +184,7 @@ class DokumenController extends BaseController
 			$spreadsheet->setActiveSheetIndex(0)
 				->setCellValue('B' . $column, $dokumens['nama_dokumen'])
 				->setCellValue('C' . $column, $dokumens['tipe_dokumen'])
-				->setCellValue('D' . $column, $dokumens['jenis_dokumen'])
+				->setCellValue('D' . $column, $dokumens['jenis_id'])
 				->setCellValue('E' . $column, $dokumens['lokasi_dokumen'])
 				->setCellValue('F' . $column, $dokumens['tanggal_upload']);
 	
@@ -222,7 +232,7 @@ class DokumenController extends BaseController
     $pdf->SetTitle('Laporan Data Dokumen Kelurahan Jatiwarna');
     $pdf->SetSubject('Laporan Data Dokumen');
     // set default header data
-	$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH,  'Laporan Dokumen Kelurahan Jatiwarna',' Jalan Pasar Kecapi, Jatiwarna, Pondokmelati, RT.003/RW.001, Jatiwarna, Bekasi, Kota Bks, Jawa Barat 17415', PDF_HEADER_STRING);
+	$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH,  'MI AL MAMURIYAH',' JL Raden Saleh Raya, No. 30, Cikini, Menteng, Jakarta Pusat, DKI Jakarta, 10330, Indonesia ', PDF_HEADER_STRING);
 	$pdf->SetY(50); // Ubah angka ini sesuai dengan posisi yang diinginkan
 	$pdf->Line(10, $pdf->GetY(), $pdf->getPageWidth() - 10, $pdf->GetY());
 

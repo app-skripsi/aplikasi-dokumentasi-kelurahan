@@ -4,21 +4,19 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class DokumenModel extends Model
+class JenisModel extends Model
 {
-    protected $table            = 'dokumen';
+    protected $table            = 'jenis';
 
 	public function getData($id = false)
 	{
 		if ($id === false) {
-			return $this->table('dokumen')
-				->join('jenis', 'jenis.id = dokumen.jenis_id')
+			return $this->table('jenis')
 				->get()
 				->getResultArray();
 		} else {
-			return $this->table('dokumen')
-				->join('jenis', 'jenis.id = dokumen.jenis_id')
-				->where('dokumen.id', $id)
+			return $this->table('jenis')
+				->where('jenis.id', $id)
 				->get()
 				->getRowArray();
 		}

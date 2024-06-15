@@ -24,7 +24,7 @@
                     <div class="container">
                         <form action="<?= site_url('dokumen/store') ?>" method="post">
                             <div class="form-group">
-                                <label for="nama_dokumen" >Nama Dokumen</label>
+                                <label for="nama_dokumen">Nama Dokumen</label>
                                 <input type="text" class="form-control" id="nama_dokumen" name="nama_dokumen" required>
                             </div>
                             <div class="form-group">
@@ -36,31 +36,32 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="jenis_dokumen">Jenis Dokumen</label>
-                                <select class="form-control" id="jenis_dokumen" name="jenis_dokumen" required>
-                                    <option value="Dokumen Pribadi">Dokumen Pribadi</option>
-                                    <option value="Dokumen Kepegawaian">Dokumen Kepegawaian</option>
-                                    <option value="Dokumen Perizinan">Dokumen Perizinan</option>
-                                    <option value="Dokumen Legal">Dokumen Legal</option>
-                                    <option value="Dokumen Proyek">Dokumen Proyek</option>
-                                    <option value="Dokumen Pendukung Administrasi">Dokumen Pendukung Administrasi</option>
-                                    <option value="Dokumen Pendidikan">Dokumen Pendidikan</option>
+                                <label class="form-label" for="jenis_id">Pilih Jenis </label>
+                                <select class="form-control" id="jenis_id" name="jenis_id">
+                                    <option value="">Pilih jenis</option> <!-- Tambahkan opsi ini -->
+
+                                    <?php foreach ($jenis as $jenisItem): ?>
+                                        <option value="<?= $jenisItem['id']; ?>"><?= $jenisItem['nama']; ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="lokasi_dokumen">Lokasi Dokumen</label>
-                                <input type="text" class="form-control" id="lokasi_dokumen" name="lokasi_dokumen" required>
+                                <input type="text" class="form-control" id="lokasi_dokumen" name="lokasi_dokumen"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label for="tanggal_upload">Tanggal</label>
-                                <input type="date" class="form-control" id="tanggal_upload" name="tanggal_upload" required>
+                                <input type="date" class="form-control" id="tanggal_upload" name="tanggal_upload"
+                                    required>
                             </div>
                             <!-- <div class="form-group">
                             <label for="image">Upload Pdf / Gambar Dokumen</label>
                                 <input type="file"class="form-control" id="doc" name="doc" accept="image/*, .pdf" required>
                             </div> -->
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><a href="<?= site_url('dokumen') ?>" style="color: white;">Kembali</a></button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><a
+                                    href="<?= site_url('dokumen') ?>" style="color: white;">Kembali</a></button>
                         </form>
                     </div>
                 </div><br>
