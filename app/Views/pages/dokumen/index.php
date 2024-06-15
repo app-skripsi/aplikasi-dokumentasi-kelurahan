@@ -24,15 +24,15 @@
                         <div class="form-group">
                             <a href="<?php echo base_url("dokumen/create") ?>" type="button"
                                 class="btn btn-primary mt-3 float-right btn-plus" style="margin-bottom: 10px;"><i
-                                    class="fas fa-plus"></i>Add New</a>
+                                    class="fas fa-plus"></i></a>
                             </a>
                             <a href="<?php echo base_url("dokumen/xls") ?>" type="button"
                                 class="btn btn-primary mt-3 float-left" style="margin-left: 10px;"><em><em></em></em>
-                                <i class="fas fa-file-excel"></i> Export Excel
+                                <i class="fas fa-file-excel"></i>
                             </a>
                             <a href="<?php echo base_url("dokumen/pdf ") ?>" type="button"
                                 class="btn btn-primary mt-3 float-left" style="margin-left: 10px;">
-                                <i class="fas fa-file-pdf"></i> Export PDF
+                                <i class="fas fa-file-pdf"></i>
                             </a>
                         </div>
                     </div>
@@ -76,12 +76,12 @@
                                             <td style="text-align: center">
                                                 <div class="btn-group">
                                                     <a href="<?php echo base_url('dokumen/edit/' . $row['id']); ?>"
-                                                        class="btn btn-sm btn-success">
-                                                        <i class="fa fa-edit">Edit</i>
+                                                        class="btn btn-sm btn-success edit-btn">
+                                                        <i class="fa fa-edit"></i>
                                                     </a>
                                                     <a href="<?php echo base_url('dokumen/delete/' . $row['id']); ?>"
                                                         class="btn btn-sm btn-danger delete-btn">
-                                                        <i class="fa fa-trash-alt">Delete</i>
+                                                        <i class="fas fa-trash-alt"></i>
                                                     </a>
                                                 </div>
                                             </td>

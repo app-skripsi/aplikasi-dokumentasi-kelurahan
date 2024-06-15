@@ -36,15 +36,6 @@
 </script>
 
 <script>
-  $(document).ready(function(){
-    $('.btn-plus').click(function(){
-      $('#myModal').modal('show');
-    });
-  });
-  </script>
-
-
-<script>
     document.addEventListener('DOMContentLoaded', function() {
         const editButtons = document.querySelectorAll('.edit-btn');
         editButtons.forEach(button => {

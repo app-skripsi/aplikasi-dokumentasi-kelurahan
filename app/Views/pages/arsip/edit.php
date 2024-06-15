@@ -68,9 +68,8 @@
                                 <?php echo form_dropdown('jenis_id', $jenis, $arsip['jenis_id'], ['class' => 'form-control']); ?>
                             </div><br>
                             <a href="<?php echo base_url('arsip'); ?>" class="btn btn-outline-info"> <i
-                                    class="nav-icon fas fa-backward"></i> Kembali</a>
-                            <button type="submit" class="btn btn-primary"> <i class="nav-icon fas fa-save"></i> Perbarui
-                                Data</button>
+                                    class="nav-icon fas fa-backward"></i></a>
+                            <button type="submit" class="btn btn-primary"> <i class="nav-icon fas fa-save"></i></button>
                         </form>
                     </div>
                 </div><br>

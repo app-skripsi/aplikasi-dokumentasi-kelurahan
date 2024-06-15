@@ -69,10 +69,9 @@
                                 ?>
                             </div>
 
-                            <a href="<?php echo base_url('dokumen'); ?>" class="btn btn-outline-info"> <i
-                                    class="nav-icon fas fa-backward"></i> Kembali</a>
-                            <button type="submit" class="btn btn-primary"> <i class="nav-icon fas fa-save"></i> Perbarui
-                                Data</button>
+                            <a href="<?php echo base_url('pages/dokumen'); ?>" class="btn btn-outline-info"> <i
+                                    class="nav-icon fas fa-backward"></i></a>
+                            <button type="submit" class="btn btn-primary"> <i class="nav-icon fas fa-save"></i></button>
                         </form>
                     </div>
                 </div><br>

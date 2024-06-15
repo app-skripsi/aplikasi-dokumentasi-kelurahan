@@ -11,10 +11,10 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class DokumenController extends BaseController
 {
-    protected $dokumen;
+	protected $dokumen;
 	protected $jenis;
 
-    public function __construct()
+	public function __construct()
 	{
 		helper(['form']);
 		$this->dokumen = new DokumenModel();
@@ -25,8 +25,8 @@ class DokumenController extends BaseController
 	public function index()
 	{
 		$data['dokumen'] = $this->dokumen->select('dokumen.*, jenis.nama')
-		->join('jenis', 'jenis.id = dokumen.jenis_id')
-		->findAll();
+			->join('jenis', 'jenis.id = dokumen.jenis_id')
+			->findAll();
 		echo view('pages/dokumen/index', $data);
 	}
 
@@ -49,13 +49,13 @@ class DokumenController extends BaseController
 			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('login'));
 		}
-		$validation =  \Config\Services::validation();
+		$validation = \Config\Services::validation();
 		$data = array(
-			'nama_dokumen'        	=> $this->request->getPost('nama_dokumen'),
-			'tipe_dokumen'         	=> $this->request->getPost('tipe_dokumen'),
-			'jenis_id'         => $this->request->getPost('jenis_id'),
-			'lokasi_dokumen'        => $this->request->getPost('lokasi_dokumen'),
-			'tanggal_upload'        => $this->request->getPost('tanggal_upload'),
+			'nama_dokumen' => $this->request->getPost('nama_dokumen'),
+			'tipe_dokumen' => $this->request->getPost('tipe_dokumen'),
+			'jenis_id' => $this->request->getPost('jenis_id'),
+			'lokasi_dokumen' => $this->request->getPost('lokasi_dokumen'),
+			'tanggal_upload' => $this->request->getPost('tanggal_upload'),
 		);
 
 		if ($validation->run($data, 'dokumen') == FALSE) {
@@ -95,14 +95,14 @@ class DokumenController extends BaseController
 		}
 		$id = $this->request->getPost('id');
 
-		$validation =  \Config\Services::validation();
+		$validation = \Config\Services::validation();
 
 		$data = array(
-			'nama_dokumen'        	=> $this->request->getPost('nama_dokumen'),
-			'tipe_dokumen'         	=> $this->request->getPost('tipe_dokumen'),
-			'jenis_id'         => $this->request->getPost('jenis_id'),
-			'lokasi_dokumen'        => $this->request->getPost('lokasi_dokumen'),
-			'tanggal_upload'        => $this->request->getPost('tanggal_upload'),
+			'nama_dokumen' => $this->request->getPost('nama_dokumen'),
+			'tipe_dokumen' => $this->request->getPost('tipe_dokumen'),
+			'jenis_id' => $this->request->getPost('jenis_id'),
+			'lokasi_dokumen' => $this->request->getPost('lokasi_dokumen'),
+			'tanggal_upload' => $this->request->getPost('tanggal_upload'),
 
 		);
 		if ($validation->run($data, 'dokumen') == FALSE) {
@@ -112,8 +112,15 @@ class DokumenController extends BaseController
 		} else {
 			$ubah = $this->dokumen->updateData($data, $id);
 			if ($ubah) {
-				session()->setFlashdata('info', 'Update Data Berhasil');
+				session()->setFlashdata('success', 'Update Data Berhasil');
+				// Sweet Alert success
+				session()->setFlashdata('alert', 'success');
 				return redirect()->to(base_url('dokumen'));
+			} else {
+				session()->setFlashdata('error', 'Gagal mengupdate data');
+				// Sweet Alert error
+				session()->setFlashdata('alert', 'error');
+				return redirect()->to(base_url('pages/dokumen/edit/' . $id));
 			}
 		}
 	}
@@ -143,7 +150,7 @@ class DokumenController extends BaseController
 			->setCellValue('D3', 'Jenis Dokumen')
 			->setCellValue('E3', 'Lokasi Dokumen')
 			->setCellValue('F3', 'Tanggal Upload');
-	
+
 		// Merge cells for the title
 		$spreadsheet->getActiveSheet()->mergeCells('A1:F1');
 		$spreadsheet->getActiveSheet()->mergeCells('A2:F2');
@@ -164,7 +171,7 @@ class DokumenController extends BaseController
 				],
 			],
 		]);
-	
+
 		// Set column widths
 		$spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(20); // Width for cell A2
 		$spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(30);
@@ -172,14 +179,14 @@ class DokumenController extends BaseController
 		$spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(30);
 		$spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(30);
 		$spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(30);
-	    $spreadsheet->getDefaultStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+		$spreadsheet->getDefaultStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 		// Center align column headers
 		$spreadsheet->getActiveSheet()->getStyle('B3:F3')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-	
+
 		$column = 4;
 		$rowNumber = 1;
-	
+
 		foreach ($exportXls as $dokumens) {
 			$spreadsheet->setActiveSheetIndex(0)
 				->setCellValue('B' . $column, $dokumens['nama_dokumen'])
@@ -187,13 +194,13 @@ class DokumenController extends BaseController
 				->setCellValue('D' . $column, $dokumens['nama_jenis'])
 				->setCellValue('E' . $column, $dokumens['lokasi_dokumen'])
 				->setCellValue('F' . $column, $dokumens['tanggal_upload']);
-	
+
 			// Set auto numbering on the left side of the data
 			$spreadsheet->getActiveSheet()->setCellValue('A' . $column, $rowNumber++);
 			$spreadsheet->getActiveSheet()->getStyle('A' . $column . ':F' . $column)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 			$column++;
 		}
-	
+
 		// Set border for data cells
 		$highestColumn = $spreadsheet->getActiveSheet()->getHighestColumn();
 		$highestRow = $spreadsheet->getActiveSheet()->getHighestRow();
@@ -207,7 +214,7 @@ class DokumenController extends BaseController
 		]);
 		$spreadsheet->getActiveSheet()->setCellValue('A3', 'No');
 		$writer = new Xlsx($spreadsheet);
-		$filename = date('Y-m-d-His'). '-Data-Dokumen';
+		$filename = date('Y-m-d-His') . '-Data-Dokumen';
 		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 		header('Content-Disposition: attachment;filename=' . $filename . '.xlsx');
 		header('Cache-Control: max-age=0');
@@ -215,50 +222,51 @@ class DokumenController extends BaseController
 		$writer->save('php://output');
 	}
 
-	public function pdf(){
-    // proteksi halaman
-    $data = array(
-        'dokumen'    => $this->dokumen->getData(),
-    );
-    $html =  view('pages/dokumen/pdf', $data);
+	public function pdf()
+	{
+		// proteksi halaman
+		$data = array(
+			'dokumen' => $this->dokumen->getData(),
+		);
+		$html = view('pages/dokumen/pdf', $data);
 
-    // test pdf
+		// test pdf
 
-    $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, 'A4', true, 'UTF-8', false);
-    // set font tulisan
-    // set document information
-    $pdf->SetCreator(PDF_CREATOR);
-    $pdf->SetAuthor('Adelia');
-    $pdf->SetTitle('Laporan Data Dokumen Kelurahan Jatiwarna');
-    $pdf->SetSubject('Laporan Data Dokumen');
-    // set default header data
-	$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH,  'MI AL MAMURIYAH',' JL Raden Saleh Raya, No. 30, Cikini, Menteng, Jakarta Pusat, DKI Jakarta, 10330, Indonesia ', PDF_HEADER_STRING);
-	$pdf->SetY(50); // Ubah angka ini sesuai dengan posisi yang diinginkan
-	$pdf->Line(10, $pdf->GetY(), $pdf->getPageWidth() - 10, $pdf->GetY());
+		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, 'A4', true, 'UTF-8', false);
+		// set font tulisan
+		// set document information
+		$pdf->SetCreator(PDF_CREATOR);
+		$pdf->SetAuthor('Adelia');
+		$pdf->SetTitle('Laporan Data Dokumen Kelurahan Jatiwarna');
+		$pdf->SetSubject('Laporan Data Dokumen');
+		// set default header data
+		$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'MI AL MAMURIYAH', ' JL Raden Saleh Raya, No. 30, Cikini, Menteng, Jakarta Pusat, DKI Jakarta, 10330, Indonesia ', PDF_HEADER_STRING);
+		$pdf->SetY(50); // Ubah angka ini sesuai dengan posisi yang diinginkan
+		$pdf->Line(10, $pdf->GetY(), $pdf->getPageWidth() - 10, $pdf->GetY());
 
-	// set header and footer fonts
-    $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-    $pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+		// set header and footer fonts
+		$pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+		$pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 
-    // set default monospaced font
-    $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-    // set margins
-    $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-    $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-    $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+		// set default monospaced font
+		$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+		// set margins
+		$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+		$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+		$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
-    // set auto page breaks
-    $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-    $pdf->AddPage();
-    // Set header
-    $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', 12));
-    $pdf->SetFont('dejavusans', '', 10);
-   
-	// write html
-    $pdf->writeHTML($html, true, false, true, false, '');
-    $this->response->setContentType('application/pdf');
-    // ouput pdf
-    $pdf->Output('Data-Dokumen.pdf', 'I');
-}
+		// set auto page breaks
+		$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+		$pdf->AddPage();
+		// Set header
+		$pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', 12));
+		$pdf->SetFont('dejavusans', '', 10);
+
+		// write html
+		$pdf->writeHTML($html, true, false, true, false, '');
+		$this->response->setContentType('application/pdf');
+		// ouput pdf
+		$pdf->Output('Data-Dokumen.pdf', 'I');
+	}
 
 }

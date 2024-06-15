@@ -21,19 +21,19 @@
                     </div>
                 </div>
                 <div class="row">
-                <?php
-                            $inputs = session()->getFlashdata('inputs');
-                            $errors = session()->getFlashdata('errors');
-                            if (!empty($errors)) { ?>
-                                <div class="alert alert-danger" role="alert">
-                                    Whoops! Ada kesalahan saat input data, yaitu:
-                                    <ul>
-                                        <?php foreach ($errors as $error) : ?>
-                                            <li><?= esc($error) ?></li>
-                                        <?php endforeach ?>
-                                    </ul>
-                                </div>
-                            <?php } ?>
+                    <?php
+                    $inputs = session()->getFlashdata('inputs');
+                    $errors = session()->getFlashdata('errors');
+                    if (!empty($errors)) { ?>
+                        <div class="alert alert-danger" role="alert">
+                            Whoops! Ada kesalahan saat input data, yaitu:
+                            <ul>
+                                <?php foreach ($errors as $error): ?>
+                                    <li><?= esc($error) ?></li>
+                                <?php endforeach ?>
+                            </ul>
+                        </div>
+                    <?php } ?>
                     <div class="container">
                         <form action="<?= site_url('arsip/store') ?>" method="post">
                             <div class="form-group">
@@ -63,9 +63,8 @@
                                 <label for="lokasi_arsip">Lokasi Arsip</label>
                                 <input type="text" class="form-control" id="lokasi_arsip" name="lokasi_arsip" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><a
-                                    href="<?= site_url('arsip') ?>" style="color: white;">Kembali</a></button>
+                            <button type="button" class="btn btn-secondary"><a href="<?php echo base_url('arsip') ?>" style="color: white;"><i class="nav-icon fas fa-backward"></i></a></button>
+                            <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i></button>
                         </form>
                     </div>
                 </div><br>
