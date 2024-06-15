@@ -53,39 +53,46 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($arsip as $key => $row) { ?>
-                    <tr>
-                      <td style="text-align: center">
-                        <?php echo $key + 1; ?>
-                      </td>
-                      <td style="text-align: center">
-                        <?php echo $row['kode_arsip']; ?>
-                      </td>
-                      <td style="text-align: center">
-                        <?php echo $row['nama_arsip']; ?>
-                      </td>
-                      <td style="text-align: center">
-                        <?php echo $row['nama']; ?>
-                      </td>
-                      <td style="text-align: center">
-                        <?php echo $row['tanggal_pembuatan']; ?>
-                      </td>
-                      <td style="text-align: center">
-                        <?php echo $row['lokasi_arsip']; ?>
-                      </td>
-                      <td style="text-align: center">
-                        <div class="btn-group">
-                          <a href="<?php echo base_url('arsip/edit/' . $row['id']); ?>" class="btn btn-sm btn-success">
-                            <i class="fa fa-edit">Edit</i>
-                          </a>
-                          <a href="<?php echo base_url('arsip/delete/' . $row['id']); ?>" class="btn btn-sm btn-danger"
-                            onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?');">
-                            <i class="fa fa-trash-alt">Delete</i>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                  <?php } ?>
+                  <?php if (isset($error)): ?>
+                    <div class="alert alert-danger">
+                      <?php echo $error; ?>
+                    </div>
+                  <?php else: ?>
+                    <?php foreach ($arsip as $key => $row) { ?>
+                      <tr>
+                        <td style="text-align: center">
+                          <?php echo $key + 1; ?>
+                        </td>
+                        <td style="text-align: center">
+                          <?php echo $row['kode_arsip']; ?>
+                        </td>
+                        <td style="text-align: center">
+                          <?php echo $row['nama_arsip']; ?>
+                        </td>
+                        <td style="text-align: center">
+                          <?php echo $row['nama']; ?>
+                        </td>
+                        <td style="text-align: center">
+                          <?php echo $row['tanggal_pembuatan']; ?>
+                        </td>
+                        <td style="text-align: center">
+                          <?php echo $row['lokasi_arsip']; ?>
+                        </td>
+                        <td style="text-align: center">
+                          <div class="btn-group">
+                            <a href="<?php echo base_url('arsip/edit/' . $row['id']); ?>" class="btn btn-sm btn-success">
+                              <i class="fa fa-edit">Edit</i>
+                            </a>
+                            <a href="<?php echo base_url('arsip/delete/' . $row['id']); ?>" class="btn btn-sm btn-danger"
+                              onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?');">
+                              <i class="fa fa-trash-alt">Delete</i>
+                            </a>
+                          </div>
+                        </td>
+                      </tr>
+                    <?php } ?>
+                  <?php endif; ?>
+
                 </tbody>
               </table>
             </div>

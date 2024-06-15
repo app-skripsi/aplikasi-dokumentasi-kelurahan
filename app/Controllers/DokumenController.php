@@ -133,7 +133,7 @@ class DokumenController extends BaseController
 
 	public function xls()
 	{
-		$exportXls = $this->dokumen->findAll();
+		$exportXls = $this->dokumen->getAllDokumen();
 		$spreadsheet = new Spreadsheet();
 		$spreadsheet->setActiveSheetIndex(0)
 			->setCellValue('A1', 'Laporan Data Dokumen Kelurahan Jatiwarna')
@@ -184,7 +184,7 @@ class DokumenController extends BaseController
 			$spreadsheet->setActiveSheetIndex(0)
 				->setCellValue('B' . $column, $dokumens['nama_dokumen'])
 				->setCellValue('C' . $column, $dokumens['tipe_dokumen'])
-				->setCellValue('D' . $column, $dokumens['jenis_id'])
+				->setCellValue('D' . $column, $dokumens['nama_jenis'])
 				->setCellValue('E' . $column, $dokumens['lokasi_dokumen'])
 				->setCellValue('F' . $column, $dokumens['tanggal_upload']);
 	

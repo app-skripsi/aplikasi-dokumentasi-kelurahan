@@ -50,7 +50,7 @@
                         <td class="table-cell" style="text-align: center;"><?php echo $key + 1; ?></td>
                         <td class="table-cell" style="text-align: center;"><?php echo $row['kode_arsip']; ?></td>
                         <td class="table-cell" style="text-align: center;"><?php echo $row['nama_arsip']; ?></td>
-                        <td class="table-cell" style="text-align: center;"><?php echo $row['jenis_arsip']; ?></td>
+                        <td class="table-cell" style="text-align: center;"><?php echo $row['nama']; ?></td>
                         <td class="table-cell" style="text-align: center;"><?php echo $row['tanggal_pembuatan']; ?></td>
                         <td class="table-cell" style="text-align: center;"><?php echo $row['lokasi_arsip']; ?></td>
                     </tr>

@@ -23,6 +23,12 @@ class ArsipModel extends Model
 				->getRowArray();
 		}
 	}
+	public function getAllArsip()
+    {
+        return $this->select('arsip.*, jenis.nama as nama_jenis')
+                    ->join('jenis', 'jenis.id = arsip.jenis_id')
+                    ->findAll();
+    }	
 	public function insertData($data)
 	{
 		return $this->db->table($this->table)->insert($data);

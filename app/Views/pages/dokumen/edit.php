@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group">
                                 <?php echo form_label('Jenis', 'jenis_id'); ?>
-                                <?php echo form_dropdown('jenis_id', $jenis, $pengajian['jenis_id'], ['class' => 'form-control']); ?>
+                                <?php echo form_dropdown('jenis_id', $jenis, $dokumen['jenis_id'], ['class' => 'form-control']); ?>
                             </div><br>
                             <div class="form-group">
                                 <?php echo form_label('Tanggal', 'tanggal_upload'); ?>

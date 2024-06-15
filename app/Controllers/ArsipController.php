@@ -125,7 +125,7 @@ class ArsipController extends BaseController
 	
 	public function xls()
 	{
-		$exportXls = $this->arsip->findAll();
+		$exportXls = $this->arsip->getAllArsip(); // Menggunakan metode yang telah diubah di ArsipModel
 		$spreadsheet = new Spreadsheet();
 		$spreadsheet->setActiveSheetIndex(0)
 			->setCellValue('A1', 'Laporan Data Arsip Kelurahan Jatiwarna')
@@ -143,7 +143,7 @@ class ArsipController extends BaseController
 		$spreadsheet->getActiveSheet()->getStyle('A2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
 		$spreadsheet->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 		$spreadsheet->getActiveSheet()->getStyle('A3')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-
+	
 		// Add yellow background and border to the title row
 		$spreadsheet->getActiveSheet()->getStyle('A1:F2')->applyFromArray([
 			'fill' => [
@@ -164,8 +164,8 @@ class ArsipController extends BaseController
 		$spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(30);
 		$spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(30);
 		$spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(30);
-	    $spreadsheet->getDefaultStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-
+		$spreadsheet->getDefaultStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+	
 		// Center align column headers
 		$spreadsheet->getActiveSheet()->getStyle('B3:F3')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 	
@@ -176,7 +176,7 @@ class ArsipController extends BaseController
 			$spreadsheet->setActiveSheetIndex(0)
 				->setCellValue('B' . $column, $arsips['kode_arsip'])
 				->setCellValue('C' . $column, $arsips['nama_arsip'])
-				->setCellValue('D' . $column, $arsips['jenis_arsip'])
+				->setCellValue('D' . $column, $arsips['nama_jenis']) // Menggunakan 'nama_jenis' yang telah di-alias di query
 				->setCellValue('E' . $column, $arsips['tanggal_pembuatan'])
 				->setCellValue('F' . $column, $arsips['lokasi_arsip']);
 	
@@ -199,11 +199,11 @@ class ArsipController extends BaseController
 		]);
 		$spreadsheet->getActiveSheet()->setCellValue('A3', 'No');
 		$writer = new Xlsx($spreadsheet);
-		$filename = date('Y-m-d-His'). '-Data-Arsip';
+		$filename = date('Y-m-d-His') . '-Data-Arsip';
 		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 		header('Content-Disposition: attachment;filename=' . $filename . '.xlsx');
 		header('Cache-Control: max-age=0');
-
+	
 		$writer->save('php://output');
 	}
 

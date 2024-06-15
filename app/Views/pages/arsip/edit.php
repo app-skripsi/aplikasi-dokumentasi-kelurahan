@@ -65,7 +65,7 @@
                             </div>
                             <div class="form-group">
                                 <?php echo form_label('Jenis', 'jenis_id'); ?>
-                                <?php echo form_dropdown('jenis_id', $jenis, $pengajian['jenis_id'], ['class' => 'form-control']); ?>
+                                <?php echo form_dropdown('jenis_id', $jenis, $arsip['jenis_id'], ['class' => 'form-control']); ?>
                             </div><br>
                             <a href="<?php echo base_url('arsip'); ?>" class="btn btn-outline-info"> <i
                                     class="nav-icon fas fa-backward"></i> Kembali</a>

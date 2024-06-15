@@ -18,7 +18,7 @@
                         <td style="text-align: center"><?php echo $key + 1; ?></td>
                         <td style="text-align: center"><?php echo $row['nama_dokumen']; ?></td>
                         <td style="text-align: center"><?php echo $row['tipe_dokumen']; ?></td>
-                        <td style="text-align: center"><?php echo $row['jenis_dokumen']; ?></td>
+                        <td style="text-align: center"><?php echo $row['nama']; ?></td>
                         <td style="text-align: center"><?php echo $row['lokasi_dokumen']; ?></td>
                         <td style="text-align: center"><?php echo $row['tanggal_upload']; ?></td>
                     </tr>

@@ -23,6 +23,14 @@ class DokumenModel extends Model
 				->getRowArray();
 		}
 	}
+
+	public function getAllDokumen()
+    {
+        return $this->select('dokumen.*, jenis.nama as nama_jenis')
+                    ->join('jenis', 'jenis.id = dokumen.jenis_id')
+                    ->findAll();
+    }	
+
 	public function insertData($data)
 	{
 		return $this->db->table($this->table)->insert($data);
