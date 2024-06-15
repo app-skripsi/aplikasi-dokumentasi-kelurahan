@@ -80,8 +80,7 @@
                                                         <i class="fa fa-edit">Edit</i>
                                                     </a>
                                                     <a href="<?php echo base_url('dokumen/delete/' . $row['id']); ?>"
-                                                        class="btn btn-sm btn-danger"
-                                                        onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?');">
+                                                        class="btn btn-sm btn-danger delete-btn">
                                                         <i class="fa fa-trash-alt">Delete</i>
                                                     </a>
                                                 </div>

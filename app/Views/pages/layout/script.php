@@ -42,3 +42,92 @@
     });
   });
   </script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const editButtons = document.querySelectorAll('.edit-btn');
+        editButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const url = this.getAttribute('href');
+                Swal.fire({
+                  title: 'Anda yakin ingin mengedit data?',
+                  text: "Anda akan dialihkan ke halaman edit.",
+                  icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Ya, edit!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = url;
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const url = this.getAttribute('href');
+
+                Swal.fire({
+                    title: 'Apakah Anda yakin?',
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Ya, hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = url;
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if (session()->has('success')) : ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '<?php echo session()->getFlashdata("success"); ?>',
+                timer: 1000,
+                showConfirmButton: false
+            });
+        <?php endif ?>
+
+        <?php if (session()->has('update')) : ?>
+            Swal.fire({
+                icon: 'update',
+                title: 'update',
+                text: '<?php echo session()->getFlashdata("update"); ?>',
+                timer: 1000,
+                showConfirmButton: false
+            });
+        <?php endif ?>
+
+        <?php if (session()->has('error')) : ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '<?php echo session()->getFlashdata("error"); ?>',
+                timer: 1000,
+                showConfirmButton: false
+            });
+        <?php endif ?>
+    });
+</script>
+

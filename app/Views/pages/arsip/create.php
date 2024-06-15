@@ -21,6 +21,19 @@
                     </div>
                 </div>
                 <div class="row">
+                <?php
+                            $inputs = session()->getFlashdata('inputs');
+                            $errors = session()->getFlashdata('errors');
+                            if (!empty($errors)) { ?>
+                                <div class="alert alert-danger" role="alert">
+                                    Whoops! Ada kesalahan saat input data, yaitu:
+                                    <ul>
+                                        <?php foreach ($errors as $error) : ?>
+                                            <li><?= esc($error) ?></li>
+                                        <?php endforeach ?>
+                                    </ul>
+                                </div>
+                            <?php } ?>
                     <div class="container">
                         <form action="<?= site_url('arsip/store') ?>" method="post">
                             <div class="form-group">

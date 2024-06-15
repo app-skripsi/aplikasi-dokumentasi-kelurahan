@@ -12,6 +12,8 @@
 <link rel="manifest" href="<?php echo base_url('./assets/img/favicon/site.webmanifest'); ?>">
 <link rel="mask-icon" href="<?php echo base_url('./assets/img/favicon/safari-pinned-tab.svg'); ?>" color="#ffffff">
 <meta name="msapplication-TileColor" content="#ffffff">
+<!-- SweetAlert CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <meta name="theme-color" content="#ffffff">
 
 <!-- Fontawesome -->
