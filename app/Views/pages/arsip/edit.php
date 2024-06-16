@@ -9,14 +9,14 @@
                     <ol class="breadcrumb breadcrumb-info">
                         <li class="breadcrumb-item "><a href="<?php echo base_url('/'); ?>">Home</a></li>
                         <li class="breadcrumb-item"><a href="<?php echo base_url('/arsip'); ?>">Data Arsip</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Create</li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit</li>
                     </ol>
                 </nav>
 
                 <div class="row mb-4 justify-content-center">
                     <div class="col-12 col-md-8 col-lg-7">
                         <hr>
-                        <h1 class="display-3 mb-4">Form Data Arsip</h1>
+                        <h1 class="display-3 mb-4">Form Edit Data Arsip</h1>
                         <hr>
                     </div>
                 </div>
