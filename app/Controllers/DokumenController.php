@@ -239,33 +239,41 @@ class DokumenController extends BaseController
 		$pdf->SetAuthor('Adelia');
 		$pdf->SetTitle('Laporan Data Dokumen Kelurahan Jatiwarna');
 		$pdf->SetSubject('Laporan Data Dokumen');
-		// set default header data
-		$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'MI AL MAMURIYAH', ' JL Raden Saleh Raya, No. 30, Cikini, Menteng, Jakarta Pusat, DKI Jakarta, 10330, Indonesia ', PDF_HEADER_STRING);
-		$pdf->SetY(50); // Ubah angka ini sesuai dengan posisi yang diinginkan
+		// Calculate responsive logo width based on the page width
+		$pageWidth = $pdf->getPageWidth();
+		$logoWidth = $pageWidth * 0.15; // Adjust the multiplier as needed for your desired logo size
+
+		// Set header data with responsive logo width
+		$pdf->SetHeaderData(PDF_HEADER_LOGO, $logoWidth, 'Laporan Dokumen Kelurahan Jatiwarna', 'Jalan Pasar Kecapi, Jatiwarna, Pondokmelati, RT.003/RW.001, Jatiwarna, Bekasi, Kota Bks, Jawa Barat 17415', PDF_HEADER_STRING);
+
+		$pdf->SetY(50); // Adjust position as needed
 		$pdf->Line(10, $pdf->GetY(), $pdf->getPageWidth() - 10, $pdf->GetY());
 
-		// set header and footer fonts
+		// Set header and footer fonts
 		$pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
 		$pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 
-		// set default monospaced font
+		// Set default monospaced font
 		$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-		// set margins
+
+		// Set margins
 		$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
 		$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
 		$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
-		// set auto page breaks
+		// Set auto page breaks
 		$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 		$pdf->AddPage();
+
 		// Set header
 		$pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', 12));
 		$pdf->SetFont('dejavusans', '', 10);
 
-		// write html
+		// Write HTML content
 		$pdf->writeHTML($html, true, false, true, false, '');
+
+		// Output PDF
 		$this->response->setContentType('application/pdf');
-		// ouput pdf
 		$pdf->Output('Data-Dokumen.pdf', 'I');
 	}
 
