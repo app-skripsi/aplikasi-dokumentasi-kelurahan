@@ -75,24 +75,14 @@ class DokumenController extends BaseController
 
 	public function edit($id)
 	{
-		// proteksi halaman
-		if (session()->get('username') == '') {
-			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-			return redirect()->to(base_url('login'));
-		}
 		$jenis = $this->jenis->findAll();
 		$data['jenis'] = ['' => 'Pilih jenis'] + array_column($jenis, 'nama', 'id');
-		$data['dokumen'] = $this->dokumen->getData($id);
+		$data['dokumen'] = $this->dokumen->find($id);
 		echo view('pages/dokumen/edit', $data);
 	}
 
 	public function update()
 	{
-		// proteksi halaman
-		if (session()->get('username') == '') {
-			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-			return redirect()->to(base_url('login'));
-		}
 		$id = $this->request->getPost('id');
 
 		$validation = \Config\Services::validation();
@@ -113,14 +103,7 @@ class DokumenController extends BaseController
 			$ubah = $this->dokumen->updateData($data, $id);
 			if ($ubah) {
 				session()->setFlashdata('success', 'Update Data Berhasil');
-				// Sweet Alert success
-				session()->setFlashdata('alert', 'success');
 				return redirect()->to(base_url('dokumen'));
-			} else {
-				session()->setFlashdata('error', 'Gagal mengupdate data');
-				// Sweet Alert error
-				session()->setFlashdata('alert', 'error');
-				return redirect()->to(base_url('pages/dokumen/edit/' . $id));
 			}
 		}
 	}
