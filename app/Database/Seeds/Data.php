@@ -27,5 +27,17 @@ class Data extends Seeder
 		];
 
 		$this->db->table('users')->insertBatch($users);
+
+		$jenis = [
+			['nama' => 'Kependudukan'],
+			['nama' => 'Administrasi'],
+			['nama' => 'Perencanaan dan Pembangunan'],
+			['nama' => 'Keuangan'],
+			['nama' => 'Pertanahan'],
+			['nama' => 'Pelayanan Publik'],
+			['nama' => 'Legal'],
+			['nama' => 'Kegiatan Sosial'],
+		];
+		$this->db->table('jenis')->insertBatch($jenis);
 	}
 }
