@@ -68,15 +68,10 @@ class ArsipController extends BaseController
 
 	public function edit($id)
 	{
-		// proteksi halaman
-		if (session()->get('username') == '') {
-			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-			return redirect()->to(base_url('login'));
-		}
 		$jenis = $this->jenis->findAll();
 		$data['jenis'] = ['' => 'Pilih jenis'] + array_column($jenis, 'nama', 'id');
-		$data['arsip'] = $this->arsip->getData($id);
-		echo view('pages/arsip/edit', $data);
+		$data['arsip'] = $this->arsip->find($id);
+		return view('pages/arsip/edit', $data);
 	}
 
 	public function update()
@@ -105,14 +100,8 @@ class ArsipController extends BaseController
 			$ubah = $this->arsip->updateData($data, $id);
 			if ($ubah) {
 				session()->setFlashdata('success', 'Update Data Berhasil');
-				// Sweet Alert success
 				session()->setFlashdata('alert', 'success');
 				return redirect()->to(base_url('arsip'));
-			} else {
-				session()->setFlashdata('error', 'Gagal mengupdate data');
-				// Sweet Alert error
-				session()->setFlashdata('alert', 'error');
-				return redirect()->to(base_url('arsip/edit/' . $id));
 			}
 		}
 	}
