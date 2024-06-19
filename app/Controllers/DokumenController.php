@@ -212,12 +212,7 @@ class DokumenController extends BaseController
 			'dokumen' => $this->dokumen->getData(),
 		);
 		$html = view('pages/dokumen/pdf', $data);
-
-		// test pdf
-
 		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, 'A4', true, 'UTF-8', false);
-		// set font tulisan
-		// set document information
 		$pdf->SetCreator(PDF_CREATOR);
 		$pdf->SetAuthor('Adelia');
 		$pdf->SetTitle('Laporan Data Dokumen Kelurahan Jatiwarna');

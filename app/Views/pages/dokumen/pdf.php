@@ -1,26 +1,56 @@
 <html>
+<head>
+    <style>
+        .table-header,
+        .table-cell {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table-header {
+            background-color: #f2f2f2;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+            /* Add space between rows */
+        }
+
+        @media (max-width: 768px) {
+
+            .table-header,
+            .table-cell {
+                font-size: 12px;
+                /* Adjust font size for smaller screens */
+            }
+        }
+    </style>
+</head>
 <body>
     <div>
-        <table cellspacing="3" cellpadding="4">
-            <thead>
+    <table class="table">
+        <thead>
                 <tr>
-                    <th style="text-align: center">No</th>
-                    <th style="text-align: center">Nama Dokumen</th>
-                    <th style="text-align: center">Jenis</th>
-                    <th style="text-align: center">Tipe</th>
-                    <th style="text-align: center">Lokasi</th>
-                    <th style="text-align: center">Tanggal</th>
+                    <th class="table-header" style="text-align: center">No</th>
+                    <th class="table-header" style="text-align: center">Nama Dokumen</th>
+                    <th class="table-header" style="text-align: center">Jenis</th>
+                    <th class="table-header" style="text-align: center">Tipe</th>
+                    <th class="table-header" style="text-align: center">Lokasi</th>
+                    <th class="table-header" style="text-align: center">Tanggal</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($dokumen as $key => $row) { ?>
                     <tr>
-                        <td style="text-align: center"><?php echo $key + 1; ?></td>
-                        <td style="text-align: center"><?php echo $row['nama_dokumen']; ?></td>
-                        <td style="text-align: center"><?php echo $row['tipe_dokumen']; ?></td>
-                        <td style="text-align: center"><?php echo $row['nama']; ?></td>
-                        <td style="text-align: center"><?php echo $row['lokasi_dokumen']; ?></td>
-                        <td style="text-align: center"><?php echo $row['tanggal_upload']; ?></td>
+                        <td class="table-cell" style="text-align: center"><?php echo $key + 1; ?></td>
+                        <td class="table-cell" style="text-align: center"><?php echo $row['nama_dokumen']; ?></td>
+                        <td class="table-cell" style="text-align: center"><?php echo $row['tipe_dokumen']; ?></td>
+                        <td class="table-cell" style="text-align: center"><?php echo $row['nama']; ?></td>
+                        <td class="table-cell" style="text-align: center"><?php echo $row['lokasi_dokumen']; ?></td>
+                        <td class="table-cell" style="text-align: center"><?php echo $row['tanggal_upload']; ?></td>
                     </tr>
                 <?php } ?>
             </tbody>
