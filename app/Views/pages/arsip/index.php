@@ -47,6 +47,7 @@
                     <th style="text-align: center">Kode Arsip</th>
                     <th style="text-align: center">Nama Arsip</th>
                     <th style="text-align: center">Jenis Arsip</th>
+                    <th style="text-align: center">Unduh Berkas</th>
                     <th style="text-align: center">Tanggal Pembuatan</th>
                     <th style="text-align: center">Lokasi Arsip</th>
                     <th style="text-align: center">Action</th>

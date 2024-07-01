@@ -48,6 +48,7 @@
                                         <th style="text-align: center">Jenis</th>
                                         <th style="text-align: center">Tipe</th>
                                         <th style="text-align: center">Lokasi</th>
+                                        <th style="text-align: center">Unduh Berkas</th>
                                         <th style="text-align: center">Tanggal</th>
                                         <th style="text-align: center">Action</th>
                                     </tr>
