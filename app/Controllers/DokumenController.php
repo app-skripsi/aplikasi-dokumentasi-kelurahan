@@ -49,10 +49,18 @@ class DokumenController extends BaseController
 			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('login'));
 		}
+		$downloadFile = $this->request->getFile('download_file');
+		if(!$downloadFile){
+			session()->setFlashdata('error','File upload tidak ditemukan');
+			return redirect()->back()->withInput();
+		}
+		$resultDownlodFile = $downloadFile->getName();
+		$downloadFile->move('upload/dokumen/file/', $resultDownlodFile);
 		$validation = \Config\Services::validation();
 		$data = array(
 			'nama_dokumen' => $this->request->getPost('nama_dokumen'),
 			'tipe_dokumen' => $this->request->getPost('tipe_dokumen'),
+			'download_file'	=> $resultDownlodFile,
 			'jenis_id' => $this->request->getPost('jenis_id'),
 			'lokasi_dokumen' => $this->request->getPost('lokasi_dokumen'),
 			'tanggal_upload' => $this->request->getPost('tanggal_upload'),

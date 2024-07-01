@@ -20,15 +20,19 @@ class ArsipMigration extends Migration
                 'constraint' => 255,
                 'null' => true,
             ],
+            'download_file' => [
+                'type'=> 'VARCHAR',
+                'constraint' => 255,
+            ],
             'nama_arsip' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
                 'null' => true,
             ],
             'jenis_id' => [
-                'type'          => 'INT',
-                'constraint'    => 5,
-                'unsigned'      => true,
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
             ],
             'tanggal_pembuatan' => [
                 'type' => 'DATE',
@@ -40,7 +44,7 @@ class ArsipMigration extends Migration
             ]
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('jenis_id','jenis','id','cascade','cascade');
+        $this->forge->addForeignKey('jenis_id', 'jenis', 'id', 'cascade', 'cascade');
         $this->forge->createTable('arsip');
     }
 

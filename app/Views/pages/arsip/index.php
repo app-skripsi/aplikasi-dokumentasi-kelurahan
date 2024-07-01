@@ -73,6 +73,7 @@
                         <td style="text-align: center">
                           <?php echo $row['nama']; ?>
                         </td>
+                        <td style="text-align: center"><? echo $row['download_file'] ?></td>
                         <td style="text-align: center">
                           <?php echo $row['tanggal_pembuatan']; ?>
                         </td>

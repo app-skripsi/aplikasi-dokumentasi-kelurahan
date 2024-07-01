@@ -43,10 +43,23 @@ class ArsipController extends BaseController
 			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('login'));
 		}
+		$downloadFile = $this->request->getFile('download_file');
+		if(!$downloadFile){
+			session()->setFlashdata('error','File upload tidak ditemukan');
+			return redirect()->back()->withInput();
+		}
+		if ($downloadFile->isValid() && !$downloadFile->hasMoved()) {
+            $resultDownlodFile = $downloadFile->getName();
+            $downloadFile->move('uploads/download_file/', $resultDownlodFile);
+        } else {
+            session()->setFlashdata('error', 'File upload gagal');
+            return redirect()->back()->withInput();
+        }
 		$validation = \Config\Services::validation();
 		$data = array(
 			'jenis_id' => $this->request->getPost('jenis_id'),
 			'kode_arsip' => $this->request->getPost('kode_arsip'),
+			'download_file'	=> $resultDownlodFile,
 			'nama_arsip' => $this->request->getPost('nama_arsip'),
 			'tanggal_pembuatan' => $this->request->getPost('tanggal_pembuatan'),
 			'lokasi_arsip' => $this->request->getPost('lokasi_arsip'),

@@ -47,8 +47,8 @@
                                         <th style="text-align: center">Nama Dokumen</th>
                                         <th style="text-align: center">Jenis</th>
                                         <th style="text-align: center">Tipe</th>
-                                        <th style="text-align: center">Lokasi</th>
                                         <th style="text-align: center">Unduh Berkas</th>
+                                        <th style="text-align: center">Lokasi</th>
                                         <th style="text-align: center">Tanggal</th>
                                         <th style="text-align: center">Action</th>
                                     </tr>
@@ -68,6 +68,7 @@
                                             <td style="text-align: center">
                                                 <?php echo $row['nama']; ?>
                                             </td>
+                                            <td style="text-align: center"><? echo $row['download_file'] ?></td>
                                             <td style="text-align: center">
                                                 <?php echo $row['lokasi_dokumen']; ?>
                                             </td>

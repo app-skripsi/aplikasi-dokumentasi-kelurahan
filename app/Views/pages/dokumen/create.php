@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    
+
                     <div class="container">
                         <form action="<?= site_url('dokumen/store') ?>" method="post">
                             <div class="form-group">
@@ -56,11 +56,13 @@
                                 <input type="date" class="form-control" id="tanggal_upload" name="tanggal_upload"
                                     required>
                             </div>
-                            <!-- <div class="form-group">
-                            <label for="image">Upload Pdf / Gambar Dokumen</label>
-                                <input type="file"class="form-control" id="doc" name="doc" accept="image/*, .pdf" required>
-                            </div> -->
-                            <button type="button" class="btn btn-secondary"><a href="<?=  base_url('dokumen') ?>" style="color: white;"><i class="nav-icon fas fa-backward"></i></a></button>
+                            <div class="form-group">
+                                <label class="form-label" for="download_file">Soft Copy Dokumen</label>
+                                <input class="form-control form-control-lg" type="file" id="download_file"
+                                    name="download_file" placeholder="Upload File Soft Copy" />
+                            </div>
+                            <button type="button" class="btn btn-secondary"><a href="<?= base_url('dokumen') ?>"
+                                    style="color: white;"><i class="nav-icon fas fa-backward"></i></a></button>
                             <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i></button>
                         </form>
                     </div>

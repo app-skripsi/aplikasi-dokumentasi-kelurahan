@@ -24,6 +24,10 @@ class DokumenMigration extends Migration
                 'constraint' => ['Public', 'Private', 'Confidential'],
                 'default' => 'Public',
             ],
+            'download_file' => [
+                'type'=> 'VARCHAR',
+                'constraint' => 255,
+            ],
             'jenis_id' => [
                 'type'          => 'INT',
                 'constraint'    => 5,

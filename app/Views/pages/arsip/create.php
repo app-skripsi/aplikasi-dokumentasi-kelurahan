@@ -60,6 +60,11 @@
                                     required>
                             </div>
                             <div class="form-group">
+                                <label class="form-label" for="download_file">Soft Copy Arsip</label>
+                                <input class="form-control form-control-lg" type="file" id="download_file"
+                                    name="download_file" placeholder="Upload File Soft Copy" />
+                            </div>
+                            <div class="form-group">
                                 <label for="lokasi_arsip">Lokasi Arsip</label>
                                 <input type="text" class="form-control" id="lokasi_arsip" name="lokasi_arsip" required>
                             </div>
