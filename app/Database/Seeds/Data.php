@@ -16,13 +16,19 @@ class Data extends Seeder
 				'password'	=> 'adel001',
 				'level'		=> 1
 			],
-
 			[
 				'id'		=> 2,
-				'nama_user'	=> 'Natasya',
-				'username'	=> 'adel002',
-				'password'	=> 'adel002',
-				'level'		=> 2
+				'nama_user'	=> 'Desi Mulyani',
+				'username'	=> 'desi001',
+				'password'	=> 'desi001',
+				'level'		=> 1
+			],
+			[
+				'id'		=> 3,
+				'nama_user'	=> 'Nabila Khaerunisa',
+				'username'	=> 'nabila001',
+				'password'	=> 'nabila001',
+				'level'		=> 1
 			],
 		];
 
