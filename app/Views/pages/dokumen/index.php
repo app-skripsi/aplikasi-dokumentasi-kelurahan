@@ -68,7 +68,13 @@
                                             <td style="text-align: center">
                                                 <?php echo $row['nama']; ?>
                                             </td>
-                                            <td style="text-align: center"><? echo $row['download_file'] ?></td>
+                                            <td>
+                                                <a href="<?php echo base_url('uploads/dokumen/' . $row['download_file']); ?>"
+                                                    data-fancybox="gallery" data-caption="Soft Copy Data" target="_blank">
+                                                    <img src="<?php echo base_url('uploads/dokumen/' . $row['download_file']); ?>"
+                                                        alt="Doc" style="width: 100px; height: auto;">
+                                                </a>
+                                            </td>
                                             <td style="text-align: center">
                                                 <?php echo $row['lokasi_dokumen']; ?>
                                             </td>

@@ -90,7 +90,6 @@ class ArsipController extends BaseController
 			return redirect()->to(base_url('login'));
 		}
 		$id = $this->request->getPost('id');
-
 		$validation = \Config\Services::validation();
 
 		$data = array(

@@ -50,7 +50,7 @@ class DokumenController extends BaseController
 		}
 		if ($dataBuktiPembayaran->isValid() && !$dataBuktiPembayaran->hasMoved()) {
 			$fileBuktiPembayaran = $dataBuktiPembayaran->getName();
-			$dataBuktiPembayaran->move('uploads/download_file/', $fileBuktiPembayaran);
+			$dataBuktiPembayaran->move('uploads/dokumen/', $fileBuktiPembayaran);
 		} else {
 			session()->setFlashdata('error', 'File upload gagal');
 			return redirect()->back()->withInput();

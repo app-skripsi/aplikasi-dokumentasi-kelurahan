@@ -74,10 +74,10 @@
                           <?php echo $row['nama']; ?>
                         </td>
                         <td>
-                          <a href="<?php echo base_url('uploads/download_file/' . $row['download_file']); ?>"
-                            data-fancybox="gallery" data-caption="Bukti Pembayaran" target="_blank">
-                            <img src="<?php echo base_url('uploads/download_file/' . $row['download_file']); ?>"
-                              alt="Gambar" style="width: 100px; height: auto;">
+                          <a href="<?php echo base_url('uploads/arsip/' . $row['download_file']); ?>"
+                            data-fancybox="gallery" data-caption="Soft Copy Data" target="_blank">
+                            <img src="<?php echo base_url('uploads/arsip/' . $row['download_file']); ?>" alt="Doc"
+                              style="width: 100px; height: auto;">
                           </a>
                         </td>
                         <td style="text-align: center">
