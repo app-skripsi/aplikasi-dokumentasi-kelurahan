@@ -2,7 +2,6 @@
 
 <body>
     <main>
-        <!-- Section -->
         <section class="min-vh-100 d-flex bg-primary align-items-center">
             <div class="container">
                 <div class="row justify-content-center">
@@ -13,16 +12,24 @@
                                 <h2 class="h4">Kelurahan Jatiwarna</h2>
                             </div>
                             <div class="card-body">
-                                <?php if (!empty(session()->getFlashdata('sukses'))) { ?><div class="alert alert-success"><?php echo session()->getFlashdata('sukses'); ?></div><?php } ?>
-                                <?php if (!empty(session()->getFlashdata('haruslogin'))) { ?><div class="alert alert-info"><?php echo session()->getFlashdata('haruslogin'); ?></div><?php } ?>
-                                <?php if (!empty(session()->getFlashdata('gagal'))) { ?><div class="alert alert-warning"><?php echo session()->getFlashdata('gagal'); ?></div><?php } ?>
+                                <?php if (!empty(session()->getFlashdata('sukses'))) { ?>
+                                    <div class="alert alert-success"><?php echo session()->getFlashdata('sukses'); ?></div>
+                                <?php } ?>
+                                <?php if (!empty(session()->getFlashdata('haruslogin'))) { ?>
+                                    <div class="alert alert-info"><?php echo session()->getFlashdata('haruslogin'); ?></div>
+                                <?php } ?>
+                                <?php if (!empty(session()->getFlashdata('gagal'))) { ?>
+                                    <div class="alert alert-warning"><?php echo session()->getFlashdata('gagal'); ?></div>
+                                <?php } ?>
                                 <?php echo form_open('authentication'); ?>
                                 <form class="p-3 mt-3">
                                     <div class="form-field d-flex align-items-center justify-content-center">
-                                        <input type="text" name="username" id="username" placeholder="Username" class="shadow-sm">
+                                        <input type="text" name="username" id="username" placeholder="Username"
+                                            class="shadow-sm">
                                     </div><br>
                                     <div class="form-field d-flex align-items-center justify-content-center">
-                                        <input type="password" name="password" id="password" placeholder="Password" class="shadow-sm">
+                                        <input type="password" name="password" id="password" placeholder="Password"
+                                            class="shadow-sm">
                                     </div><br>
                                     <div class="d-flex align-items-center justify-content-center">
                                         <button type="submit" class="btn btn-lg btn-primary">Login</button>

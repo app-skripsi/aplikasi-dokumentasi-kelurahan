@@ -38,22 +38,17 @@ class ArsipController extends BaseController
 
 	public function store()
 	{
-		// proteksi halaman
-		if (session()->get('username') == '') {
-			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-			return redirect()->to(base_url('login'));
-		}
 		$downloadFile = $this->request->getFile('download_file');
 		if(!$downloadFile){
 			session()->setFlashdata('error','File upload tidak ditemukan');
-			return redirect()->back()->withInput();
+			return redirect()->to(base_url('arsip/create'));
 		}
 		if ($downloadFile->isValid() && !$downloadFile->hasMoved()) {
             $resultDownlodFile = $downloadFile->getName();
-            $downloadFile->move('uploads/download_file/', $resultDownlodFile);
+            $downloadFile->move('uploads/arsip/', $resultDownlodFile);
         } else {
             session()->setFlashdata('error', 'File upload gagal');
-            return redirect()->back()->withInput();
+            return redirect()->to(base_url('arsip/create'));
         }
 		$validation = \Config\Services::validation();
 		$data = array(

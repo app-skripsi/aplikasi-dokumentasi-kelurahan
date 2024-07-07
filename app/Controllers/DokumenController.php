@@ -21,7 +21,6 @@ class DokumenController extends BaseController
 		$this->jenis = new JenisModel();
 
 	}
-
 	public function index()
 	{
 		$data['dokumen'] = $this->dokumen->select('dokumen.*, jenis.nama')
@@ -44,26 +43,26 @@ class DokumenController extends BaseController
 
 	public function store()
 	{
-		// proteksi halaman
-		if (session()->get('username') == '') {
-			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-			return redirect()->to(base_url('login'));
-		}
-		$downloadFile = $this->request->getFile('download_file');
-		if(!$downloadFile){
-			session()->setFlashdata('error','File upload tidak ditemukan');
+		$dataBuktiPembayaran = $this->request->getFile('download_file');
+		if (!$dataBuktiPembayaran) {
+			session()->setFlashdata('error', 'File upload tidak ditemukan');
 			return redirect()->back()->withInput();
 		}
-		$resultDownlodFile = $downloadFile->getName();
-		$downloadFile->move('upload/dokumen/file/', $resultDownlodFile);
+		if ($dataBuktiPembayaran->isValid() && !$dataBuktiPembayaran->hasMoved()) {
+			$fileBuktiPembayaran = $dataBuktiPembayaran->getName();
+			$dataBuktiPembayaran->move('uploads/download_file/', $fileBuktiPembayaran);
+		} else {
+			session()->setFlashdata('error', 'File upload gagal');
+			return redirect()->back()->withInput();
+		}
 		$validation = \Config\Services::validation();
 		$data = array(
 			'nama_dokumen' => $this->request->getPost('nama_dokumen'),
 			'tipe_dokumen' => $this->request->getPost('tipe_dokumen'),
-			'download_file'	=> $resultDownlodFile,
 			'jenis_id' => $this->request->getPost('jenis_id'),
 			'lokasi_dokumen' => $this->request->getPost('lokasi_dokumen'),
 			'tanggal_upload' => $this->request->getPost('tanggal_upload'),
+			'download_file' => $fileBuktiPembayaran,
 		);
 
 		if ($validation->run($data, 'dokumen') == FALSE) {
@@ -92,7 +91,19 @@ class DokumenController extends BaseController
 	public function update()
 	{
 		$id = $this->request->getPost('id');
-
+		$dataBuktiPembayaran = $this->request->getFile('download_file');
+		if (!$dataBuktiPembayaran) {
+			session()->setFlashdata('error', 'File upload tidak ditemukan');
+			return redirect()->back()->withInput();
+		}
+		if ($dataBuktiPembayaran->isValid() && !$dataBuktiPembayaran->hasMoved()) {
+			session()->setFlashdata('success', 'Upload File Berhasil');
+			$fileBuktiPembayaran = $dataBuktiPembayaran->getName();
+			$dataBuktiPembayaran->move('uploads/download_file/', $fileBuktiPembayaran);
+		} else {
+			session()->setFlashdata('error', 'File upload gagal');
+			return redirect()->back()->withInput();
+		}
 		$validation = \Config\Services::validation();
 
 		$data = array(
@@ -101,7 +112,7 @@ class DokumenController extends BaseController
 			'jenis_id' => $this->request->getPost('jenis_id'),
 			'lokasi_dokumen' => $this->request->getPost('lokasi_dokumen'),
 			'tanggal_upload' => $this->request->getPost('tanggal_upload'),
-
+			'download_file' => $fileBuktiPembayaran,
 		);
 		if ($validation->run($data, 'dokumen') == FALSE) {
 			session()->setFlashdata('inputs', $this->request->getPost());

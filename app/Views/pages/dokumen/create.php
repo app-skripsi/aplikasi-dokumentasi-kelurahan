@@ -23,7 +23,7 @@
                 <div class="row">
 
                     <div class="container">
-                        <form action="<?= site_url('dokumen/store') ?>" method="post">
+                        <form action="<?= site_url('dokumen/store') ?>" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="nama_dokumen">Nama Dokumen</label>
                                 <input type="text" class="form-control" id="nama_dokumen" name="nama_dokumen" required>

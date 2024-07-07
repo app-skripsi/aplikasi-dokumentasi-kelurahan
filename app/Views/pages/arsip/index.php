@@ -25,12 +25,12 @@
                 class="btn btn-primary mt-3 float-right btn-plus" style="margin-bottom: 10px;"><i
                   class="fas fa-plus"></i></a>
               </a>
-              <a href="<?php echo base_url("arsip/xls") ?>" type="button" class="btn btn-primary mt-3 float-left" target="_blank"
-                style="margin-left: 10px;"><em><em></em></em>
+              <a href="<?php echo base_url("arsip/xls") ?>" type="button" class="btn btn-primary mt-3 float-left"
+                target="_blank" style="margin-left: 10px;"><em><em></em></em>
                 <i class="fas fa-file-excel"></i>
               </a>
-              <a href="<?php echo base_url("arsip/pdf") ?>" type="button" class="btn btn-primary mt-3 float-left" target="_blank"
-                style="margin-left: 10px;">
+              <a href="<?php echo base_url("arsip/pdf") ?>" type="button" class="btn btn-primary mt-3 float-left"
+                target="_blank" style="margin-left: 10px;">
                 <i class="fas fa-file-pdf"></i>
               </a>
             </div>
@@ -73,7 +73,13 @@
                         <td style="text-align: center">
                           <?php echo $row['nama']; ?>
                         </td>
-                        <td style="text-align: center"><? echo $row['download_file'] ?></td>
+                        <td>
+                          <a href="<?php echo base_url('uploads/download_file/' . $row['download_file']); ?>"
+                            data-fancybox="gallery" data-caption="Bukti Pembayaran" target="_blank">
+                            <img src="<?php echo base_url('uploads/download_file/' . $row['download_file']); ?>"
+                              alt="Gambar" style="width: 100px; height: auto;">
+                          </a>
+                        </td>
                         <td style="text-align: center">
                           <?php echo $row['tanggal_pembuatan']; ?>
                         </td>
@@ -82,10 +88,12 @@
                         </td>
                         <td style="text-align: center">
                           <div class="btn-group">
-                            <a href="<?php echo base_url('arsip/edit/' . $row['id']); ?>" class="btn btn-sm btn-success edit-btn">
+                            <a href="<?php echo base_url('arsip/edit/' . $row['id']); ?>"
+                              class="btn btn-sm btn-success edit-btn">
                               <i class="fa fa-edit"></i>
                             </a>
-                            <a href="<?php echo base_url('arsip/delete/' . $row['id']); ?>" class="btn btn-sm btn-danger delete-btn">
+                            <a href="<?php echo base_url('arsip/delete/' . $row['id']); ?>"
+                              class="btn btn-sm btn-danger delete-btn">
                               <i class="fa fa-trash-alt"></i>
                             </a>
                           </div>

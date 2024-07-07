@@ -17,6 +17,6 @@
 <meta name="theme-color" content="#ffffff">
 
 <!-- Fontawesome -->
-<link type="text/css" href="<?php echo base_url('./font-awesome/css/all.min.css'); ?>" rel="stylesheet">
-<link type="text/css" href="<?php echo base_url('./css/neumorphism.css'); ?>" rel="stylesheet">
+<link type="text/css" href="<?php echo base_url('../../font-awesome/css/all.min.css'); ?>" rel="stylesheet">
+<link type="text/css" href="<?php echo base_url('../../css/neumorphism.css'); ?>" rel="stylesheet">
 </head>

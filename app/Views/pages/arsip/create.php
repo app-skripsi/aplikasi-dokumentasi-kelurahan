@@ -35,7 +35,7 @@
                         </div>
                     <?php } ?>
                     <div class="container">
-                        <form action="<?= site_url('arsip/store') ?>" method="post">
+                        <form action="<?= site_url('arsip/store') ?>" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="kode_arsip">Kode Arsip</label>
                                 <input type="text" class="form-control" id="kode_arsip" name="kode_arsip" required>
