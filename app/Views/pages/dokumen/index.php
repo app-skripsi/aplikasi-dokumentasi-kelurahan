@@ -70,9 +70,8 @@
                                             </td>
                                             <td>
                                                 <a href="<?php echo base_url('uploads/dokumen/' . $row['download_file']); ?>"
-                                                    data-fancybox="gallery" data-caption="Soft Copy Data" target="_blank">
-                                                    <img src="<?php echo base_url('uploads/dokumen/' . $row['download_file']); ?>"
-                                                        alt="Doc" style="width: 100px; height: auto;">
+                                                   data-caption="Soft Copy Data" target="_blank">
+                                                    <i class="fas fa-eye"></i>
                                                 </a>
                                             </td>
                                             <td style="text-align: center">
