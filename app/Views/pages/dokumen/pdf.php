@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <style>
         .table-header,
@@ -29,10 +30,11 @@
         }
     </style>
 </head>
+
 <body>
     <div>
-    <table class="table">
-        <thead>
+        <table class="table">
+            <thead>
                 <tr>
                     <th class="table-header" style="text-align: center">No</th>
                     <th class="table-header" style="text-align: center">Nama Dokumen</th>
@@ -57,4 +59,5 @@
         </table>
     </div>
 </body>
+
 </html>

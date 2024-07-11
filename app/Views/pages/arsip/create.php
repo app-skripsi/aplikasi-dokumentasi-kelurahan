@@ -28,7 +28,7 @@
                         <div class="alert alert-danger" role="alert">
                             Whoops! Ada kesalahan saat input data, yaitu:
                             <ul>
-                                <?php foreach ($errors as $error): ?>
+                                <?php foreach ($errors as $error) : ?>
                                     <li><?= esc($error) ?></li>
                                 <?php endforeach ?>
                             </ul>
@@ -49,20 +49,18 @@
                                 <select class="form-control" id="jenis_id" name="jenis_id">
                                     <option value="">Pilih jenis</option> <!-- Tambahkan opsi ini -->
 
-                                    <?php foreach ($jenis as $jenisItem): ?>
+                                    <?php foreach ($jenis as $jenisItem) : ?>
                                         <option value="<?= $jenisItem['id']; ?>"><?= $jenisItem['nama']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="tanggal_pembuatan">Tanggal Pembuatan</label>
-                                <input type="date" class="form-control" id="tanggal_pembuatan" name="tanggal_pembuatan"
-                                    required>
+                                <input type="date" class="form-control" id="tanggal_pembuatan" name="tanggal_pembuatan" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="download_file">Soft Copy Arsip</label>
-                                <input class="form-control form-control-lg" type="file" id="download_file"
-                                    name="download_file" placeholder="Upload File Soft Copy" />
+                                <input class="form-control form-control-lg" type="file" id="download_file" name="download_file" placeholder="Upload File Soft Copy" />
                             </div>
                             <div class="form-group">
                                 <label for="lokasi_arsip">Lokasi Arsip</label>

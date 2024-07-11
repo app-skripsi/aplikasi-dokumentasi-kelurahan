@@ -22,16 +22,12 @@
                 <div class="row">
                     <div class="container">
                         <div class="form-group">
-                            <a href="<?php echo base_url("dokumen/create") ?>" type="button"
-                                class="btn btn-primary mt-3 float-right btn-plus" style="margin-bottom: 10px;"><i
-                                    class="fas fa-plus"></i></a>
+                            <a href="<?php echo base_url("dokumen/create") ?>" type="button" class="btn btn-primary mt-3 float-right btn-plus" style="margin-bottom: 10px;"><i class="fas fa-plus"></i></a>
                             </a>
-                            <a href="<?php echo base_url("dokumen/xls") ?>" type="button"
-                                class="btn btn-primary mt-3 float-left" style="margin-left: 10px;"><em><em></em></em>
+                            <a href="<?php echo base_url("dokumen/xls") ?>" type="button" class="btn btn-primary mt-3 float-left" style="margin-left: 10px;"><em><em></em></em>
                                 <i class="fas fa-file-excel"></i>
                             </a>
-                            <a href="<?php echo base_url("dokumen/pdf ") ?>" type="button"
-                                class="btn btn-primary mt-3 float-left" style="margin-left: 10px;">
+                            <a href="<?php echo base_url("dokumen/pdf ") ?>" type="button" class="btn btn-primary mt-3 float-left" style="margin-left: 10px;">
                                 <i class="fas fa-file-pdf"></i>
                             </a>
                         </div>
@@ -69,8 +65,7 @@
                                                 <?php echo $row['nama']; ?>
                                             </td>
                                             <td>
-                                                <a href="<?php echo base_url('uploads/dokumen/' . $row['download_file']); ?>"
-                                                   data-caption="Soft Copy Data" target="_blank">
+                                                <a href="<?php echo base_url('uploads/dokumen/' . $row['download_file']); ?>" data-caption="Soft Copy Data" target="_blank">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                             </td>
@@ -82,12 +77,10 @@
                                             </td>
                                             <td style="text-align: center">
                                                 <div class="btn-group">
-                                                    <a href="<?php echo base_url('dokumen/edit/' . $row['id']); ?>"
-                                                        class="btn btn-sm btn-success edit-btn">
+                                                    <a href="<?php echo base_url('dokumen/edit/' . $row['id']); ?>" class="btn btn-sm btn-success edit-btn">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <a href="<?php echo base_url('dokumen/delete/' . $row['id']); ?>"
-                                                        class="btn btn-sm btn-danger delete-btn">
+                                                    <a href="<?php echo base_url('dokumen/delete/' . $row['id']); ?>" class="btn btn-sm btn-danger delete-btn">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </a>
                                                 </div>

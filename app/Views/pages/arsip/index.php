@@ -21,16 +21,12 @@
         <div class="row">
           <div class="container">
             <div class="form-group">
-              <a href="<?php echo base_url("arsip/create") ?>" type="button"
-                class="btn btn-primary mt-3 float-right btn-plus" style="margin-bottom: 10px;"><i
-                  class="fas fa-plus"></i></a>
+              <a href="<?php echo base_url("arsip/create") ?>" type="button" class="btn btn-primary mt-3 float-right btn-plus" style="margin-bottom: 10px;"><i class="fas fa-plus"></i></a>
               </a>
-              <a href="<?php echo base_url("arsip/xls") ?>" type="button" class="btn btn-primary mt-3 float-left"
-                target="_blank" style="margin-left: 10px;"><em><em></em></em>
+              <a href="<?php echo base_url("arsip/xls") ?>" type="button" class="btn btn-primary mt-3 float-left" target="_blank" style="margin-left: 10px;"><em><em></em></em>
                 <i class="fas fa-file-excel"></i>
               </a>
-              <a href="<?php echo base_url("arsip/pdf") ?>" type="button" class="btn btn-primary mt-3 float-left"
-                target="_blank" style="margin-left: 10px;">
+              <a href="<?php echo base_url("arsip/pdf") ?>" type="button" class="btn btn-primary mt-3 float-left" target="_blank" style="margin-left: 10px;">
                 <i class="fas fa-file-pdf"></i>
               </a>
             </div>
@@ -54,11 +50,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php if (isset($error)): ?>
+                  <?php if (isset($error)) : ?>
                     <div class="alert alert-danger">
                       <?php echo $error; ?>
                     </div>
-                  <?php else: ?>
+                  <?php else : ?>
                     <?php foreach ($arsip as $key => $row) { ?>
                       <tr>
                         <td style="text-align: center">
@@ -74,9 +70,8 @@
                           <?php echo $row['nama']; ?>
                         </td>
                         <td>
-                          <a href="<?php echo base_url('uploads/arsip/' . $row['download_file']); ?>"
-                           data-caption="Soft Copy Data" target="_blank">
-                           <i class="fas fa-eye"></i>
+                          <a href="<?php echo base_url('uploads/arsip/' . $row['download_file']); ?>" data-caption="Soft Copy Data" target="_blank">
+                            <i class="fas fa-eye"></i>
                           </a>
                         </td>
                         <td style="text-align: center">
@@ -87,12 +82,10 @@
                         </td>
                         <td style="text-align: center">
                           <div class="btn-group">
-                            <a href="<?php echo base_url('arsip/edit/' . $row['id']); ?>"
-                              class="btn btn-sm btn-success edit-btn">
+                            <a href="<?php echo base_url('arsip/edit/' . $row['id']); ?>" class="btn btn-sm btn-success edit-btn">
                               <i class="fa fa-edit"></i>
                             </a>
-                            <a href="<?php echo base_url('arsip/delete/' . $row['id']); ?>"
-                              class="btn btn-sm btn-danger delete-btn">
+                            <a href="<?php echo base_url('arsip/delete/' . $row['id']); ?>" class="btn btn-sm btn-danger delete-btn">
                               <i class="fa fa-trash-alt"></i>
                             </a>
                           </div>

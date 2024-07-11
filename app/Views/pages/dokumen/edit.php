@@ -69,8 +69,7 @@
                                 ?>
                             </div>
 
-                            <a href="<?php echo base_url('dokumen'); ?>" class="btn btn-outline-info"> <i
-                                    class="nav-icon fas fa-backward"></i></a>
+                            <a href="<?php echo base_url('dokumen'); ?>" class="btn btn-outline-info"> <i class="nav-icon fas fa-backward"></i></a>
                             <button type="submit" class="btn btn-primary"> <i class="nav-icon fas fa-save"></i></button>
                         </form>
                     </div>

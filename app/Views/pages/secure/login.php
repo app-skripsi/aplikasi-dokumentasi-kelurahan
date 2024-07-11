@@ -24,12 +24,10 @@
                                 <?php echo form_open('authentication'); ?>
                                 <form class="p-3 mt-3">
                                     <div class="form-field d-flex align-items-center justify-content-center">
-                                        <input type="text" name="username" id="username" placeholder="Username"
-                                            class="shadow-sm">
+                                        <input type="text" name="username" id="username" placeholder="Username" class="shadow-sm">
                                     </div><br>
                                     <div class="form-field d-flex align-items-center justify-content-center">
-                                        <input type="password" name="password" id="password" placeholder="Password"
-                                            class="shadow-sm">
+                                        <input type="password" name="password" id="password" placeholder="Password" class="shadow-sm">
                                     </div><br>
                                     <div class="d-flex align-items-center justify-content-center">
                                         <button type="submit" class="btn btn-lg btn-primary">Login</button>
