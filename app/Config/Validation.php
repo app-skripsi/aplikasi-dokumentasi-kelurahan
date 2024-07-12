@@ -76,7 +76,7 @@ class Validation
 	public $dokumen = [
 		'nama_dokumen' => 'required',
 		'tipe_dokumen' => 'required',
-		'jenis_id' => 'required',
+		'jenis_id' 		=> 'required',
 		'lokasi_dokumen' => 'required',
 		'tanggal_upload' => 'required',
 

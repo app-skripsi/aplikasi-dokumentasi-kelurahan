@@ -1,5 +1,10 @@
 <?php echo view('pages/layout/head'); ?>
-
+<style>
+        /* Sembunyikan input field */
+        #pic {
+            display: none;
+        }
+    </style>
 <body>
     <?php echo view('pages/layout/header'); ?>
     <main>
@@ -28,7 +33,7 @@
                         <div class="alert alert-danger" role="alert">
                             Whoops! Ada kesalahan saat input data, yaitu:
                             <ul>
-                                <?php foreach ($errors as $error) : ?>
+                                <?php foreach ($errors as $error): ?>
                                     <li><?= esc($error) ?></li>
                                 <?php endforeach ?>
                             </ul>
@@ -49,24 +54,31 @@
                                 <select class="form-control" id="jenis_id" name="jenis_id">
                                     <option value="">Pilih jenis</option> <!-- Tambahkan opsi ini -->
 
-                                    <?php foreach ($jenis as $jenisItem) : ?>
+                                    <?php foreach ($jenis as $jenisItem): ?>
                                         <option value="<?= $jenisItem['id']; ?>"><?= $jenisItem['nama']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="tanggal_pembuatan">Tanggal Pembuatan</label>
-                                <input type="date" class="form-control" id="tanggal_pembuatan" name="tanggal_pembuatan" required>
+                                <input type="date" class="form-control" id="tanggal_pembuatan" name="tanggal_pembuatan"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="download_file">Soft Copy Arsip</label>
-                                <input class="form-control form-control-lg" type="file" id="download_file" name="download_file" placeholder="Upload File Soft Copy" />
+                                <input class="form-control form-control-lg" type="file" id="download_file"
+                                    name="download_file" placeholder="Upload File Soft Copy" />
                             </div>
                             <div class="form-group">
                                 <label for="lokasi_arsip">Lokasi Arsip</label>
                                 <input type="text" class="form-control" id="lokasi_arsip" name="lokasi_arsip" required>
                             </div>
-                            <button type="button" class="btn btn-secondary"><a href="<?php echo base_url('arsip') ?>" style="color: white;"><i class="nav-icon fas fa-backward"></i></a></button>
+                            <div class="form-group">
+                                <label for="pic"></label>
+                                <input type="text" class="form-control" id="pic" name="pic" required>
+                            </div>
+                            <button type="button" class="btn btn-secondary"><a href="<?php echo base_url('arsip') ?>"
+                                    style="color: white;"><i class="nav-icon fas fa-backward"></i></a></button>
                             <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i></button>
                         </form>
                     </div>
@@ -76,7 +88,13 @@
     <?php echo view('pages/layout/footer'); ?>
 
     <?php echo view('pages/layout/script'); ?>
-
+    <script>
+        // Mengisi nilai input field secara otomatis dengan username yang login
+        document.addEventListener('DOMContentLoaded', function () {
+            var picInput = document.getElementById('pic');
+            picInput.value = "<?= session()->get('nama_user'); ?>";
+        });
+    </script>
 </body>
 
 </html>

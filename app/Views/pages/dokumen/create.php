@@ -1,5 +1,10 @@
 <?php echo view('pages/layout/head'); ?>
-
+<style>
+        /* Sembunyikan input field */
+        #pic {
+            display: none;
+        }
+    </style>
 <body>
     <?php echo view('pages/layout/header'); ?>
     <main>
@@ -58,6 +63,10 @@
                                 <label class="form-label" for="download_file">Soft Copy Dokumen</label>
                                 <input class="form-control form-control-lg" type="file" id="download_file" name="download_file" placeholder="Upload File Soft Copy" />
                             </div>
+                            <div class="form-group">
+                                <label for="pic"></label>
+                                <input type="text" class="form-control" id="pic" name="pic" required>
+                            </div>
                             <button type="button" class="btn btn-secondary"><a href="<?= base_url('dokumen') ?>" style="color: white;"><i class="nav-icon fas fa-backward"></i></a></button>
                             <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i></button>
                         </form>
@@ -68,7 +77,13 @@
     <?php echo view('pages/layout/footer'); ?>
 
     <?php echo view('pages/layout/script'); ?>
-
+    <script>
+        // Mengisi nilai input field secara otomatis dengan username yang login
+        document.addEventListener('DOMContentLoaded', function () {
+            var picInput = document.getElementById('pic');
+            picInput.value = "<?= session()->get('nama_user'); ?>";
+        });
+        </script>
 </body>
 
 </html>

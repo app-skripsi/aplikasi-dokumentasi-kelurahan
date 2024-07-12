@@ -38,10 +38,11 @@
                 <tr>
                     <th class="table-header" style="text-align: center">No</th>
                     <th class="table-header" style="text-align: center">Nama Dokumen</th>
-                    <th class="table-header" style="text-align: center">Jenis</th>
-                    <th class="table-header" style="text-align: center">Tipe</th>
+                    <th class="table-header" style="text-align: center">Jenis Dokumen</th>
+                    <th class="table-header" style="text-align: center">Tipe Dokumen</th>
                     <th class="table-header" style="text-align: center">Lokasi</th>
                     <th class="table-header" style="text-align: center">Tanggal</th>
+                    <th class="table-header" style="text-align: center">Pic</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,6 +54,7 @@
                         <td class="table-cell" style="text-align: center"><?php echo $row['nama']; ?></td>
                         <td class="table-cell" style="text-align: center"><?php echo $row['lokasi_dokumen']; ?></td>
                         <td class="table-cell" style="text-align: center"><?php echo $row['tanggal_upload']; ?></td>
+                        <td class="table-cell" style="text-align: center"><?php echo $row['pic']; ?></td>
                     </tr>
                 <?php } ?>
             </tbody>

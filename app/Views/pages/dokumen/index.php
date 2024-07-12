@@ -46,6 +46,7 @@
                                         <th style="text-align: center">Unduh Berkas</th>
                                         <th style="text-align: center">Lokasi</th>
                                         <th style="text-align: center">Tanggal</th>
+                                        <th style="text-align: center">Pic</th>
                                         <th style="text-align: center">Action</th>
                                     </tr>
                                 </thead>
@@ -74,6 +75,9 @@
                                             </td>
                                             <td style="text-align: center">
                                                 <?php echo $row['tanggal_upload']; ?>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <?php echo $row['pic']; ?>
                                             </td>
                                             <td style="text-align: center">
                                                 <div class="btn-group">

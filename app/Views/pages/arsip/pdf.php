@@ -37,11 +37,12 @@
             <thead>
                 <tr>
                     <th class="table-header" style="text-align: center;">No</th>
-                    <th class="table-header" style="text-align: center;">Kode </th>
-                    <th class="table-header" style="text-align: center;">Nama </th>
-                    <th class="table-header" style="text-align: center;">Jenis </th>
+                    <th class="table-header" style="text-align: center;">Kode Arsip</th>
+                    <th class="table-header" style="text-align: center;">Nama Arsip</th>
+                    <th class="table-header" style="text-align: center;">Jenis Arsip</th>
                     <th class="table-header" style="text-align: center;">Tanggal </th>
                     <th class="table-header" style="text-align: center;">Lokasi </th>
+                    <th class="table-header" style="text-align: center;">Pic </th>
                 </tr>
             </thead>
             <tbody>
@@ -53,6 +54,7 @@
                         <td class="table-cell" style="text-align: center;"><?php echo $row['nama']; ?></td>
                         <td class="table-cell" style="text-align: center;"><?php echo $row['tanggal_pembuatan']; ?></td>
                         <td class="table-cell" style="text-align: center;"><?php echo $row['lokasi_arsip']; ?></td>
+                        <td class="table-cell" style="text-align: center;"><?php echo $row['pic']; ?></td>
                     </tr>
                 <?php } ?>
             </tbody>

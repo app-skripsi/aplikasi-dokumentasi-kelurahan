@@ -19,7 +19,6 @@ class DokumenController extends BaseController
 		helper(['form']);
 		$this->dokumen = new DokumenModel();
 		$this->jenis = new JenisModel();
-
 	}
 	public function index()
 	{
@@ -43,14 +42,14 @@ class DokumenController extends BaseController
 
 	public function store()
 	{
-		$dataBuktiPembayaran = $this->request->getFile('download_file');
-		if (!$dataBuktiPembayaran) {
+		$dataDokumen = $this->request->getFile('download_file');
+		if (!$dataDokumen) {
 			session()->setFlashdata('error', 'File upload tidak ditemukan');
 			return redirect()->back()->withInput();
 		}
-		if ($dataBuktiPembayaran->isValid() && !$dataBuktiPembayaran->hasMoved()) {
-			$fileBuktiPembayaran = $dataBuktiPembayaran->getName();
-			$dataBuktiPembayaran->move('uploads/dokumen/', $fileBuktiPembayaran);
+		if ($dataDokumen->isValid() && !$dataDokumen->hasMoved()) {
+			$fileDokumen = $dataDokumen->getName();
+			$dataDokumen->move('uploads/dokumen/', $fileDokumen);
 		} else {
 			session()->setFlashdata('error', 'File upload gagal');
 			return redirect()->back()->withInput();
@@ -62,7 +61,8 @@ class DokumenController extends BaseController
 			'jenis_id' => $this->request->getPost('jenis_id'),
 			'lokasi_dokumen' => $this->request->getPost('lokasi_dokumen'),
 			'tanggal_upload' => $this->request->getPost('tanggal_upload'),
-			'download_file' => $fileBuktiPembayaran,
+			'pic'			=> $this->request->getPost('pic'),
+			'download_file' => $fileDokumen,
 		);
 
 		if ($validation->run($data, 'dokumen') == FALSE) {
@@ -91,15 +91,15 @@ class DokumenController extends BaseController
 	public function update()
 	{
 		$id = $this->request->getPost('id');
-		$dataBuktiPembayaran = $this->request->getFile('download_file');
-		if (!$dataBuktiPembayaran) {
+		$dataDokumen = $this->request->getFile('download_file');
+		if (!$dataDokumen) {
 			session()->setFlashdata('error', 'File upload tidak ditemukan');
 			return redirect()->back()->withInput();
 		}
-		if ($dataBuktiPembayaran->isValid() && !$dataBuktiPembayaran->hasMoved()) {
+		if ($dataDokumen->isValid() && !$dataDokumen->hasMoved()) {
 			session()->setFlashdata('success', 'Upload File Berhasil');
-			$fileBuktiPembayaran = $dataBuktiPembayaran->getName();
-			$dataBuktiPembayaran->move('uploads/download_file/', $fileBuktiPembayaran);
+			$fileDokumen = $dataDokumen->getName();
+			$dataDokumen->move('uploads/download_file/', $fileDokumen);
 		} else {
 			session()->setFlashdata('error', 'File upload gagal');
 			return redirect()->back()->withInput();
@@ -110,14 +110,14 @@ class DokumenController extends BaseController
 			'nama_dokumen' => $this->request->getPost('nama_dokumen'),
 			'tipe_dokumen' => $this->request->getPost('tipe_dokumen'),
 			'jenis_id' => $this->request->getPost('jenis_id'),
+			'pic'		=> $this->request->getPost('pic'),
 			'lokasi_dokumen' => $this->request->getPost('lokasi_dokumen'),
 			'tanggal_upload' => $this->request->getPost('tanggal_upload'),
-			'download_file' => $fileBuktiPembayaran,
 		);
 		if ($validation->run($data, 'dokumen') == FALSE) {
 			session()->setFlashdata('inputs', $this->request->getPost());
 			session()->setFlashdata('errors', $validation->getErrors());
-			return redirect()->to(base_url('pages/dokumen/edit/' . $id));
+			return redirect()->to(base_url('dokumen/edit/' . $id));
 		} else {
 			$ubah = $this->dokumen->updateData($data, $id);
 			if ($ubah) {
@@ -151,18 +151,19 @@ class DokumenController extends BaseController
 			->setCellValue('C3', 'Tipe Dokumen')
 			->setCellValue('D3', 'Jenis Dokumen')
 			->setCellValue('E3', 'Lokasi Dokumen')
-			->setCellValue('F3', 'Tanggal Upload');
+			->setCellValue('F3', 'Tanggal Upload')
+			->setCellValue('G3', 'Pic');
 
 		// Merge cells for the title
-		$spreadsheet->getActiveSheet()->mergeCells('A1:F1');
-		$spreadsheet->getActiveSheet()->mergeCells('A2:F2');
+		$spreadsheet->getActiveSheet()->mergeCells('A1:G1');
+		$spreadsheet->getActiveSheet()->mergeCells('A2:G2');
 		// Center align the title
 		$spreadsheet->getActiveSheet()->getStyle('A2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
 		$spreadsheet->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 		$spreadsheet->getActiveSheet()->getStyle('A3')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 		// Add yellow background and border to the title row
-		$spreadsheet->getActiveSheet()->getStyle('A1:F2')->applyFromArray([
+		$spreadsheet->getActiveSheet()->getStyle('A1:G2')->applyFromArray([
 			'fill' => [
 				'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
 				'startColor' => ['rgb' => 'FFFF00'], // Yellow background
@@ -181,10 +182,11 @@ class DokumenController extends BaseController
 		$spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(30);
 		$spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(30);
 		$spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(30);
+		$spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(30);
 		$spreadsheet->getDefaultStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 		// Center align column headers
-		$spreadsheet->getActiveSheet()->getStyle('B3:F3')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+		$spreadsheet->getActiveSheet()->getStyle('B3:G3')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 		$column = 4;
 		$rowNumber = 1;
@@ -195,11 +197,12 @@ class DokumenController extends BaseController
 				->setCellValue('C' . $column, $dokumens['tipe_dokumen'])
 				->setCellValue('D' . $column, $dokumens['nama_jenis'])
 				->setCellValue('E' . $column, $dokumens['lokasi_dokumen'])
-				->setCellValue('F' . $column, $dokumens['tanggal_upload']);
+				->setCellValue('F' . $column, $dokumens['tanggal_upload'])
+				->setCellValue('G' . $column, $dokumens['pic']);
 
 			// Set auto numbering on the left side of the data
 			$spreadsheet->getActiveSheet()->setCellValue('A' . $column, $rowNumber++);
-			$spreadsheet->getActiveSheet()->getStyle('A' . $column . ':F' . $column)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+			$spreadsheet->getActiveSheet()->getStyle('A' . $column . ':G' . $column)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 			$column++;
 		}
 
@@ -273,5 +276,4 @@ class DokumenController extends BaseController
 		$this->response->setContentType('application/pdf');
 		$pdf->Output('Data-Dokumen.pdf', 'I');
 	}
-
 }

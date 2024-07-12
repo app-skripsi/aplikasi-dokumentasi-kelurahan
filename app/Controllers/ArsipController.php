@@ -55,6 +55,7 @@ class ArsipController extends BaseController
 			'jenis_id' => $this->request->getPost('jenis_id'),
 			'kode_arsip' => $this->request->getPost('kode_arsip'),
 			'download_file'	=> $resultDownlodFile,
+			'pic'			=> $this->request->getPost('pic'),
 			'nama_arsip' => $this->request->getPost('nama_arsip'),
 			'tanggal_pembuatan' => $this->request->getPost('tanggal_pembuatan'),
 			'lokasi_arsip' => $this->request->getPost('lokasi_arsip'),
@@ -96,6 +97,7 @@ class ArsipController extends BaseController
 			'jenis_id' => $this->request->getPost('jenis_id'),
 			'kode_arsip' => $this->request->getPost('kode_arsip'),
 			'nama_arsip' => $this->request->getPost('nama_arsip'),
+			'pic'			=> $this->request->getPost('pic'),
 			'tanggal_pembuatan' => $this->request->getPost('tanggal_pembuatan'),
 			'lokasi_arsip' => $this->request->getPost('lokasi_arsip'),
 		);
@@ -137,18 +139,19 @@ class ArsipController extends BaseController
 			->setCellValue('C3', 'Nama Arsip')
 			->setCellValue('D3', 'Jenis Arsip')
 			->setCellValue('E3', 'Tanggal Pembuatan')
-			->setCellValue('F3', 'Lokasi Arsip');
+			->setCellValue('F3', 'Lokasi Arsip')
+			->setCellValue('G3', 'Pic');
 
 		// Merge cells for the title
-		$spreadsheet->getActiveSheet()->mergeCells('A1:F1');
-		$spreadsheet->getActiveSheet()->mergeCells('A2:F2');
+		$spreadsheet->getActiveSheet()->mergeCells('A1:G1');
+		$spreadsheet->getActiveSheet()->mergeCells('A2:G2');
 		// Center align the title
 		$spreadsheet->getActiveSheet()->getStyle('A2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
 		$spreadsheet->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 		$spreadsheet->getActiveSheet()->getStyle('A3')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 		// Add yellow background and border to the title row
-		$spreadsheet->getActiveSheet()->getStyle('A1:F2')->applyFromArray([
+		$spreadsheet->getActiveSheet()->getStyle('A1:G2')->applyFromArray([
 			'fill' => [
 				'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
 				'startColor' => ['rgb' => 'FFFF00'], // Yellow background
@@ -167,10 +170,11 @@ class ArsipController extends BaseController
 		$spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(30);
 		$spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(30);
 		$spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(30);
+		$spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(30);
 		$spreadsheet->getDefaultStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 		// Center align column headers
-		$spreadsheet->getActiveSheet()->getStyle('B3:F3')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+		$spreadsheet->getActiveSheet()->getStyle('B3:G3')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 		$column = 4;
 		$rowNumber = 1;
@@ -181,11 +185,12 @@ class ArsipController extends BaseController
 				->setCellValue('C' . $column, $arsips['nama_arsip'])
 				->setCellValue('D' . $column, $arsips['nama_jenis']) // Menggunakan 'nama_jenis' yang telah di-alias di query
 				->setCellValue('E' . $column, $arsips['tanggal_pembuatan'])
-				->setCellValue('F' . $column, $arsips['lokasi_arsip']);
+				->setCellValue('F' . $column, $arsips['lokasi_arsip'])
+				->setCellValue('G' . $column, $arsips['pic']);
 
 			// Set auto numbering on the left side of the data
 			$spreadsheet->getActiveSheet()->setCellValue('A' . $column, $rowNumber++);
-			$spreadsheet->getActiveSheet()->getStyle('A' . $column . ':F' . $column)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+			$spreadsheet->getActiveSheet()->getStyle('A' . $column . ':G' . $column)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 			$column++;
 		}
 
