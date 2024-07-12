@@ -67,10 +67,7 @@
                             <?php echo form_label('Jenis', 'jenis_id'); ?>
                             <?php echo form_dropdown('jenis_id', $jenis, $arsip['jenis_id'], ['class' => 'form-control']); ?>
                         </div><br>
-                        <div class="form-group">
-                                <label class="form-label" for="download_file">Soft Copy Arsip</label>
-                                <input class="form-control form-control-lg" type="file" id="download_file" name="download_file" value="<?php echo isset($arsip['download_file']) ? $arsip['download_file'] : ''; ?>"  />
-                            </div>
+                       
                         <a href="<?php echo base_url('arsip'); ?>" class="btn btn-outline-info"> <i class="nav-icon fas fa-backward"></i></a>
                         <button type="submit" class="btn btn-primary"> <i class="nav-icon fas fa-save"></i></button>
                         <?php echo form_close(); ?>
