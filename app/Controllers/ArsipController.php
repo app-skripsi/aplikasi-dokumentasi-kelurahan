@@ -97,7 +97,6 @@ class ArsipController extends BaseController
 			'jenis_id' => $this->request->getPost('jenis_id'),
 			'kode_arsip' => $this->request->getPost('kode_arsip'),
 			'nama_arsip' => $this->request->getPost('nama_arsip'),
-			'pic'			=> $this->request->getPost('pic'),
 			'tanggal_pembuatan' => $this->request->getPost('tanggal_pembuatan'),
 			'lokasi_arsip' => $this->request->getPost('lokasi_arsip'),
 		);

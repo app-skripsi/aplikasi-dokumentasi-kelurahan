@@ -110,7 +110,6 @@ class DokumenController extends BaseController
 			'nama_dokumen' => $this->request->getPost('nama_dokumen'),
 			'tipe_dokumen' => $this->request->getPost('tipe_dokumen'),
 			'jenis_id' => $this->request->getPost('jenis_id'),
-			'pic'		=> $this->request->getPost('pic'),
 			'lokasi_dokumen' => $this->request->getPost('lokasi_dokumen'),
 			'tanggal_upload' => $this->request->getPost('tanggal_upload'),
 		);
