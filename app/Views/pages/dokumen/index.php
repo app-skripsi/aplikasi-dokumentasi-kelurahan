@@ -27,7 +27,7 @@
                             <a href="<?php echo base_url("dokumen/xls") ?>" type="button" class="btn btn-primary mt-3 float-left" style="margin-left: 10px;"><em><em></em></em>
                                 <i class="fas fa-file-excel"></i>
                             </a>
-                            <a href="<?php echo base_url("dokumen/pdf ") ?>" type="button" class="btn btn-primary mt-3 float-left" style="margin-left: 10px;">
+                            <a href="<?php echo base_url("dokumen/pdf ") ?>" type="button" class="btn btn-primary mt-3 float-left" style="margin-left: 10px;" target="_blank">
                                 <i class="fas fa-file-pdf"></i>
                             </a>
                         </div>
