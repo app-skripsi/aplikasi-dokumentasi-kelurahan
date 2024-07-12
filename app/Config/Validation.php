@@ -54,7 +54,6 @@ class Validation
 		'kode_arsip' => [
 			'required' => 'kode_arsip perlu di isi'
 		],
-
 		'nama_arsip' => [
 			'required' => 'nama_arsip perlu di isi'
 		],
@@ -79,7 +78,6 @@ class Validation
 		'jenis_id' 		=> 'required',
 		'lokasi_dokumen' => 'required',
 		'tanggal_upload' => 'required',
-
 	];
 
 	public $dokumen_errors = [

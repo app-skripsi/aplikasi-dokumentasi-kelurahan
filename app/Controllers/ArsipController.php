@@ -103,7 +103,7 @@ class ArsipController extends BaseController
 		if ($validation->run($data, 'arsip') == FALSE) {
 			session()->setFlashdata('inputs', $this->request->getPost());
 			session()->setFlashdata('errors', $validation->getErrors());
-			return redirect()->to(base_url('pages/arsip/edit/' . $id));
+			return redirect()->to(base_url('arsip/edit/' . $id));
 		} else {
 			$ubah = $this->arsip->updateData($data, $id);
 			if ($ubah) {

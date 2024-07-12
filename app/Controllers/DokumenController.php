@@ -91,19 +91,6 @@ class DokumenController extends BaseController
 	public function update()
 	{
 		$id = $this->request->getPost('id');
-		$dataDokumen = $this->request->getFile('download_file');
-		if (!$dataDokumen) {
-			session()->setFlashdata('error', 'File upload tidak ditemukan');
-			return redirect()->back()->withInput();
-		}
-		if ($dataDokumen->isValid() && !$dataDokumen->hasMoved()) {
-			session()->setFlashdata('success', 'Upload File Berhasil');
-			$fileDokumen = $dataDokumen->getName();
-			$dataDokumen->move('uploads/download_file/', $fileDokumen);
-		} else {
-			session()->setFlashdata('error', 'File upload gagal');
-			return redirect()->back()->withInput();
-		}
 		$validation = \Config\Services::validation();
 
 		$data = array(
